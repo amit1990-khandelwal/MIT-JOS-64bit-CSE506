@@ -21,5 +21,7 @@ Lab7: Final project - (JOS-on-JOS Virtualization)
 
 As referenced from the lab webpage :- 
 JOS can be thought of as an exokernel, where the kernel implements a minimal set of core functionality that safely exports hardware resources to applications. These low-level kernel interfaces may be inconvenient for user processes to use directly, so user processes will make use of a "library operating system" (libos) to abstract these low-level exported resources into more convenient programming abstractions.
+
 Each lab was provided with skeleton code for JOS operating system, allowing us to do the key implementation as described in each lab.
+
 Each repository inside MIT-JOS-64bit-CSE506 contains the completed code for the corresponding Lab.
