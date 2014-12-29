@@ -1,0 +1,37 @@
+OBJDIRS += user
+GUESTDIRS += user
+
+USERLIBS = jos
+USERLIBS += lwip
+
+$(OBJDIR)/user/%.o: user/%.c
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	@mkdir -p $(subst $(OBJDIR), $(GUESTDIR), $(@D))
+	$(V)$(CC) -nostdinc $(GUEST_USER_CFLAGS) -c -o $(subst $(OBJDIR), $(GUESTDIR), $@) $<
+
+$(GUESTDIR)/user/%.o: user/%.c
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(GUEST_USER_CFLAGS) -c -o $@ $<
+
+$(OBJDIR)/user/%: $(OBJDIR)/user/%.o $(OBJDIR)/lib/entry.o $(USERLIBS:%=$(OBJDIR)/lib/lib%.a) user/user.ld
+	@echo + ld $@
+	$(V)$(LD) -o $@.debug $(ULDFLAGS) $(LDFLAGS) -nostdlib $(OBJDIR)/lib/entry.o $@.o -L$(OBJDIR)/lib $(USERLIBS:%=-l%) $(GCC_LIB)
+	$(V)$(OBJDUMP) -S $@.debug > $@.asm
+	$(V)$(NM) -n $@.debug > $@.sym
+	$(V)$(OBJCOPY) --add-gnu-debuglink=$(basename $@.debug) $@.debug $@
+	@echo + ld $(subst $(OBJDIR), $(GUESTDIR), $@) 
+	$(V)$(LD) -o $(subst $(OBJDIR), $(GUESTDIR), $@).debug $(GULDFLAGS) $(LDFLAGS) -nostdlib $(GUESTDIR)/lib/entry.o $(subst $(OBJDIR), $(GUESTDIR), $@).o -L$(GUESTDIR)/lib $(USERLIBS:%=-l%) $(GCC_LIB)
+	$(V)$(OBJDUMP) -S $(subst $(OBJDIR), $(GUESTDIR), $@).debug > $(subst $(OBJDIR), $(GUESTDIR), $@).asm
+	$(V)$(NM) -n $(subst $(OBJDIR), $(GUESTDIR), $@).debug > $(subst $(OBJDIR), $(GUESTDIR), $@).sym
+	$(V)$(OBJCOPY) --add-gnu-debuglink=$(basename $(subst $(OBJDIR), $(GUESTDIR), $@).debug) $(subst $(OBJDIR), $(GUESTDIR), $@).debug $(subst $(OBJDIR), $(GUESTDIR), $@)
+
+
+$(GUESTDIR)/user/%: $(GUESTDIR)/user/%.o $(GUESTDIR)/lib/entry.o $(USERLIBS:%=$(GUESTDIR)/lib/lib%.a) user/guestuser.ld
+	@echo + ld $@
+	$(V)$(LD) -o $@.debug $(ULDFLAGS) $(LDFLAGS) -nostdlib $(OBJDIR)/lib/entry.o $@.o -L$(OBJDIR)/lib $(USERLIBS:%=-l%) $(GCC_LIB)
+	$(V)$(OBJDUMP) -S $@.debug > $@.asm
+	$(V)$(NM) -n $@.debug > $@.sym
+	$(V)$(OBJCOPY) --add-gnu-debuglink=$(basename $@.debug) $@.debug $@

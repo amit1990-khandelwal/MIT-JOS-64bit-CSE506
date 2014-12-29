@@ -1,0 +1,76 @@
+OBJDIRS += lib
+GUESTDIRS += lib
+
+LIB_SRCFILES :=		lib/console.c \
+			lib/libmain.c \
+			lib/exit.c \
+			lib/panic.c \
+			lib/printf.c \
+			lib/printfmt.c \
+			lib/readline.c \
+			lib/string.c \
+			lib/syscall.c
+
+LIB_SRCFILES :=		$(LIB_SRCFILES) \
+			lib/pgfault.c \
+			lib/pfentry.S \
+			lib/fork.c \
+			lib/ipc.c
+
+LIB_SRCFILES :=		$(LIB_SRCFILES) \
+			lib/args.c \
+			lib/fd.c \
+			lib/file.c \
+			lib/fprintf.c \
+			lib/pageref.c \
+			lib/spawn.c
+
+LIB_SRCFILES :=		$(LIB_SRCFILES) \
+			lib/sockets.c \
+			lib/nsipc.c \
+			lib/malloc.c
+LIB_SRCFILES :=		$(LIB_SRCFILES) \
+			lib/pipe.c \
+			lib/wait.c
+
+GUEST_LIB_SRCFILES := $(LIB_SRCFILES)
+
+HOST_LIB_OBJFILES := $(patsubst lib/%.c, $(OBJDIR)/lib/%.o, $(LIB_SRCFILES))
+HOST_LIB_OBJFILES := $(patsubst lib/%.S, $(OBJDIR)/lib/%.o, $(HOST_LIB_OBJFILES))
+
+GUEST_LIB_OBJFILES := $(patsubst lib/%.c, $(GUESTDIR)/lib/%.o, $(GUEST_LIB_SRCFILES))
+GUEST_LIB_OBJFILES := $(patsubst lib/%.S, $(GUESTDIR)/lib/%.o, $(GUEST_LIB_OBJFILES))
+
+$(OBJDIR)/lib/%.o: lib/%.c
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	@mkdir -p $(subst $(OBJDIR), $(GUESTDIR), $(@D))
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	$(V)$(CC) -nostdinc $(GUEST_USER_CFLAGS) -c -o $(subst $(OBJDIR), $(GUESTDIR), $@) $<
+
+$(OBJDIR)/lib/%.o: lib/%.S
+	@echo + as[USER] $<
+	@mkdir -p $(@D)
+	@mkdir -p $(subst $(OBJDIR), $(GUESTDIR), $(@D))
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	$(V)$(CC) -nostdinc $(GUEST_USER_CFLAGS) -c -o $(subst $(OBJDIR), $(GUESTDIR), $@) $<
+
+$(GUESTDIR)/lib/%.o: lib/%.c
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(GUEST_USER_CFLAGS) -c -o $@ $<
+
+$(GUESTDIR)/lib/%.o: lib/%.S
+	@echo + as[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(GUEST_USER_CFLAGS) -c -o $@ $<
+
+$(OBJDIR)/lib/libjos.a: $(HOST_LIB_OBJFILES)
+	@echo + ar $@
+	$(V)$(AR) r $@ $(HOST_LIB_OBJFILES)
+	@echo + ar $(subst $(OBJDIR), $(GUESTDIR), $@)
+	$(V)$(AR) r $(subst $(OBJDIR), $(GUESTDIR), $@) $(GUEST_LIB_OBJFILES)
+
+$(GUESTDIR)/lib/libjos.a: $(GUEST_LIB_OBJFILES)
+	@echo + ar $@
+	$(V)$(AR) r $@ $(GUEST_LIB_OBJFILES)

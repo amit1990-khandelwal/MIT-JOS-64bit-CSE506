@@ -1,0 +1,50 @@
+6828 decimal is XXX octal!
+
+e820 MEMORY MAP
+size: 20, address: 0x0000000000000000, length: 0x000000000009f000, type: 1
+size: 20, address: 0x000000000009f000, length: 0x0000000000001000, type: 2
+size: 20, address: 0x00000000000e8000, length: 0x0000000000018000, type: 2
+size: 20, address: 0x0000000000100000, length: 0x0000000007ef0000, type: 1
+size: 20, address: 0x0000000007ff0000, length: 0x0000000000010000, type: 3
+size: 20, address: 0x00000000fffc0000, length: 0x0000000000040000, type: 2
+
+Physical memory: 128M available, base = 636K, extended = 130048K, npages = 32768
+Pages limited to 3276800 by upage address range (12800MB), Pages limited to 134201344 by remapped phys mem (524224MB)
+SMP: too many CPUs, CPU 0 disabled
+SMP: CPU 0 found 1 CPU(s)
+enabled interrupts: 1 2 4
+FS is running
+FS can do I/O
+Device 1 presence: 1
+superblock is good
+[VMM] VMX extension supported.
+[VMM] EPT extension supported.
+VMXON
+e820 map hypercall implemented
+Handle cpuid implemented
+Handle cpuid implemented
+6828 decimal is XXX octal!
+Handle cpuid implemented
+VMX extension hidden from guest.
+
+e820 MEMORY MAP
+size: 20, address: 0x0000000000000000, length: 0x00000000000a0000, type: 1
+size: 20, address: 0x00000000000a0000, length: 0x0000000000060000, type: 2
+size: 20, address: 0x0000000000100000, length: 0x0000000000f00000, type: 1
+
+Physical memory: 16M available, base = 640K, extended = 15360K, npages = 4096
+Pages limited to 3276800 by upage address range (12800MB), Pages limited to 134201344 by remapped phys mem (524224MB)
+check_boot_pml4e() succeeded!
+check_page_alloc() succeeded!
+failing 8003c03000 ffffffffffffffff
+check_page() succeeded!
+enabled interrupts: 1 2 4
+CPU 0 cannot release kernel_lock: not held by any CPU
+Acquired at:kernel panic on CPU 0 at kern/spinlock.c:107: spin_unlock
+Welcome to the JOS kernel monitor!
+Type 'help' for a list of commands.
+K> xxexit
+Unknown command 'exit'
+K> quit
+Unknown command 'quit'
+K> xac

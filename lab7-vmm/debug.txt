@@ -1,0 +1,4612 @@
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for x86_64-pc-linux-gnu
+echo "   -O0 -fno-builtin -I. -MD -fno-omit-frame-pointer -mno-red-zone -Wall -Wno-format -Wno-unused -Werror -gdwarf-2 -I./net/lwip/include -I./net/lwip/include/ipv4 -I./net/lwip/jos -fno-stack-protector -DJOS_KERNEL -DDWARF_SUPPORT -gdwarf-2 -mcmodel=large -m64 -DVMM_HOST -DVMM_GUEST" | cmp -s obj/.vars.KERN_CFLAGS || echo "   -O0 -fno-builtin -I. -MD -fno-omit-frame-pointer -mno-red-zone -Wall -Wno-format -Wno-unused -Werror -gdwarf-2 -I./net/lwip/include -I./net/lwip/include/ipv4 -I./net/lwip/jos -fno-stack-protector -DJOS_KERNEL -DDWARF_SUPPORT -gdwarf-2 -mcmodel=large -m64 -DVMM_HOST -DVMM_GUEST" > obj/.vars.KERN_CFLAGS
+echo "" | cmp -s obj/.vars.INIT_CFLAGS || echo "" > obj/.vars.INIT_CFLAGS
+echo "   -O0 -fno-builtin -I. -MD -fno-omit-frame-pointer -mno-red-zone -Wall -Wno-format -Wno-unused -Werror -gdwarf-2 -I./net/lwip/include -I./net/lwip/include/ipv4 -I./net/lwip/jos -fno-stack-protector -DJOS_USER -gdwarf-2 -mcmodel=large -m64 -DVMM_HOST -DVMM_GUEST" | cmp -s obj/.vars.USER_CFLAGS || echo "   -O0 -fno-builtin -I. -MD -fno-omit-frame-pointer -mno-red-zone -Wall -Wno-format -Wno-unused -Werror -gdwarf-2 -I./net/lwip/include -I./net/lwip/include/ipv4 -I./net/lwip/jos -fno-stack-protector -DJOS_USER -gdwarf-2 -mcmodel=large -m64 -DVMM_HOST -DVMM_GUEST" > obj/.vars.USER_CFLAGS
++ ar obj/lib/libjos.a
+ar r obj/lib/libjos.a obj/guest/obj/lib/console.o obj/guest/obj/lib/libmain.o obj/guest/obj/lib/exit.o obj/guest/obj/lib/panic.o obj/guest/obj/lib/printf.o obj/guest/obj/lib/printfmt.o obj/guest/obj/lib/readline.o obj/guest/obj/lib/string.o obj/guest/obj/lib/syscall.o obj/guest/obj/lib/pgfault.o  obj/guest/obj/lib/pfentry.o obj/guest/obj/lib/fork.o obj/guest/obj/lib/ipc.o obj/guest/obj/lib/args.o obj/guest/obj/lib/fd.o obj/guest/obj/lib/file.o obj/guest/obj/lib/fprintf.o obj/guest/obj/lib/pageref.o obj/guest/obj/lib/spawn.o obj/guest/obj/lib/sockets.o obj/guest/obj/lib/nsipc.o obj/guest/obj/lib/malloc.o obj/guest/obj/lib/pipe.o obj/guest/obj/lib/wait.o
+
+# Make data base, printed on Fri Nov 28 16:03:49 2014
+
+# Variables
+
+# makefile (from `net/lwip/Makefrag', line 58)
+LWIP_OBJFILES := obj/guest/obj/net/lwip/api/api_lib.o obj/guest/obj/net/lwip/api/api_msg.o obj/guest/obj/net/lwip/api/err.o obj/guest/obj/net/lwip/api/sockets.o obj/guest/obj/net/lwip/api/tcpip.o obj/guest/obj/net/lwip/api/netbuf.o obj/guest/obj/net/lwip/core/init.o obj/guest/obj/net/lwip/core/tcp_in.o obj/guest/obj/net/lwip/core/dhcp.o obj/guest/obj/net/lwip/core/mem.o obj/guest/obj/net/lwip/core/memp.o obj/guest/obj/net/lwip/core/netif.o obj/guest/obj/net/lwip/core/pbuf.o obj/guest/obj/net/lwip/core/raw.o obj/guest/obj/net/lwip/core/stats.o obj/guest/obj/net/lwip/core/sys.o obj/guest/obj/net/lwip/core/tcp.o obj/guest/obj/net/lwip/core/ipv4/ip_addr.o obj/guest/obj/net/lwip/core/ipv4/icmp.o obj/guest/obj/net/lwip/core/ipv4/ip.o obj/guest/obj/net/lwip/core/ipv4/ip_frag.o obj/guest/obj/net/lwip/core/ipv4/inet_chksum.o obj/guest/obj/net/lwip/core/ipv4/inet.o obj/guest/obj/net/lwip/core/tcp_out.o obj/guest/obj/net/lwip/core/udp.o obj/guest/obj/net/lwip/netif/etharp.o obj/guest/obj/net/lwip/netif/loopif.o obj/guest/obj/net/lwip/jos/arch/sys_arch.o obj/guest/obj/net/lwip/jos/arch/thread.o  obj/guest/obj/net/lwip/jos/arch/longjmp.o obj/guest/obj/net/lwip/jos/arch/perror.o obj/guest/obj/net/lwip/jos/jif/jif.o obj/guest/obj/net/lwip/api/api_lib.o obj/guest/obj/net/lwip/api/api_msg.o obj/guest/obj/net/lwip/api/err.o obj/guest/obj/net/lwip/api/sockets.o obj/guest/obj/net/lwip/api/tcpip.o obj/guest/obj/net/lwip/api/netbuf.o obj/guest/obj/net/lwip/core/init.o obj/guest/obj/net/lwip/core/tcp_in.o obj/guest/obj/net/lwip/core/dhcp.o obj/guest/obj/net/lwip/core/mem.o obj/guest/obj/net/lwip/core/memp.o obj/guest/obj/net/lwip/core/netif.o obj/guest/obj/net/lwip/core/pbuf.o obj/guest/obj/net/lwip/core/raw.o obj/guest/obj/net/lwip/core/stats.o obj/guest/obj/net/lwip/core/sys.o obj/guest/obj/net/lwip/core/tcp.o obj/guest/obj/net/lwip/core/ipv4/ip_addr.o obj/guest/obj/net/lwip/core/ipv4/icmp.o obj/guest/obj/net/lwip/core/ipv4/ip.o obj/guest/obj/net/lwip/core/ipv4/ip_frag.o obj/guest/obj/net/lwip/core/ipv4/inet_chksum.o obj/guest/obj/net/lwip/core/ipv4/inet.o obj/guest/obj/net/lwip/core/tcp_out.o obj/guest/obj/net/lwip/core/udp.o obj/guest/obj/net/lwip/netif/etharp.o obj/guest/obj/net/lwip/netif/loopif.o obj/guest/obj/net/lwip/jos/arch/sys_arch.o obj/guest/obj/net/lwip/jos/arch/thread.o  obj/guest/obj/net/lwip/jos/arch/longjmp.o obj/guest/obj/net/lwip/jos/arch/perror.o obj/guest/obj/net/lwip/jos/jif/jif.o
+# makefile (from `GNUmakefile', line 318)
+QEMUOPTS = -m 256 -hda $(OBJDIR)/kern/kernel.img -serial mon:stdio -gdb tcp::$(GDBPORT) $(shell if $(QEMU) -nographic -help | grep -q '^-D '; then echo '-D qemu.log'; fi) -smp $(CPUS) -hdb $(OBJDIR)/fs/fs.img -net user -net nic,model=e1000 -redir tcp:$(PORT7)::7 -redir tcp:$(PORT80)::80 -redir udp:$(PORT7)::7 -net dump,file=qemu.pcap $(QEMUEXTRA)
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# makefile (from `GNUmakefile', line 186)
+BOCHS := bochs
+# makefile (from `GNUmakefile', line 55)
+QEMU := qemu-system-x86_64
+# default
+CWEAVE = cweave
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile (from `fs/Makefrag', line 48)
+USERAPPS :=  obj/user/cat obj/user/echo obj/user/ls obj/user/lsfd obj/user/num obj/user/forktree obj/user/primes obj/user/primespipe obj/user/sh obj/user/testfdsharing obj/user/testkbd obj/user/testpipe obj/user/testpteshare obj/user/testshell obj/user/hello  obj/user/vmm obj/guest/obj/user/cat obj/guest/obj/user/echo obj/guest/obj/user/ls obj/guest/obj/user/lsfd obj/guest/obj/user/num obj/guest/obj/user/forktree obj/guest/obj/user/primes obj/guest/obj/user/primespipe obj/guest/obj/user/sh obj/guest/obj/user/testfdsharing obj/guest/obj/user/testkbd obj/guest/obj/user/testpipe obj/guest/obj/user/testpteshare obj/guest/obj/user/testshell obj/guest/obj/user/hello  obj/guest/obj/user/vmm
+# makefile
+CURDIR := /home/cse506/virt_test_task1
+# makefile (from `conf/lab.mk', line 2)
+PACKAGEDATE = Thu Oct 30 16:56:04 EDT 2014
+# makefile
+SHELL = /bin/sh
+# default
+RM = rm -f
+# makefile (from `GNUmakefile', line 278)
+USER_CFLAGS :=    -O0 -fno-builtin -I. -MD -fno-omit-frame-pointer -mno-red-zone -Wall -Wno-format -Wno-unused -Werror -gdwarf-2 -I./net/lwip/include -I./net/lwip/include/ipv4 -I./net/lwip/jos -fno-stack-protector -DJOS_USER -gdwarf-2 -mcmodel=large -m64 -DVMM_HOST -DVMM_GUEST
+# default
+CO = co
+# default
+COMPILE.mod = $(M2C) $(M2FLAGS) $(MODFLAGS) $(TARGET_ARCH)
+# environment
+_ = /usr/bin/make
+# default
+PREPROCESS.F = $(FC) $(FFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -F
+# makefile (from `fs/Makefrag', line 52)
+FSIMGFILES := fs/newmotd fs/motd  fs/motd_guest fs/index.html fs/lorem fs/script fs/testshell.key fs/testshell.sh  obj/user/cat obj/user/echo obj/user/ls obj/user/lsfd obj/user/num obj/user/forktree obj/user/primes obj/user/primespipe obj/user/sh obj/user/testfdsharing obj/user/testkbd obj/user/testpipe obj/user/testpteshare obj/user/testshell obj/user/hello  obj/user/vmm obj/guest/obj/user/cat obj/guest/obj/user/echo obj/guest/obj/user/ls obj/guest/obj/user/lsfd obj/guest/obj/user/num obj/guest/obj/user/forktree obj/guest/obj/user/primes obj/guest/obj/user/primespipe obj/guest/obj/user/sh obj/guest/obj/user/testfdsharing obj/guest/obj/user/testkbd obj/guest/obj/user/testpipe obj/guest/obj/user/testpteshare obj/guest/obj/user/testshell obj/guest/obj/user/hello  obj/guest/obj/user/vmm obj/guest/obj/user/init
+# default
+LINK.o = $(CC) $(LDFLAGS) $(TARGET_ARCH)
+# default
+OUTPUT_OPTION = -o $@
+# makefile (from `GNUmakefile', line 68)
+GDBPORT := 26002
+# makefile (from `GNUmakefile', line 315)
+IMAGES = $(OBJDIR)/kern/kernel.img $(OBJDIR)/fs/fs.img
+# makefile (from `GNUmakefile', line 103)
+ULDFLAGS := -T user/user.ld
+# default
+COMPILE.cpp = $(COMPILE.cc)
+# makefile (from `obj/guest/obj/.deps', line 1)
+MAKEFILE_LIST :=  GNUmakefile conf/lab.mk boot/Makefrag kern/Makefrag lib/Makefrag user/Makefrag fs/Makefrag net/Makefrag net/lwip/Makefrag vmm/Makefrag conf/guest/lab.mk boot/Makefrag kern/Makefrag lib/Makefrag user/Makefrag fs/Makefrag net/Makefrag net/lwip/Makefrag obj/guest/obj/.deps
+# makefile (from `GNUmakefile', line 307)
+PORT7 := 26003
+# default
+LINK.p = $(PC) $(PFLAGS) $(CPPFLAGS) $(LDFLAGS) $(TARGET_ARCH)
+# makefile (from `GNUmakefile', line 27)
+TOP = .
+# makefile (from `lib/Makefrag', line 31)
+LIB_SRCFILES := lib/console.c lib/libmain.c lib/exit.c lib/panic.c lib/printf.c lib/printfmt.c lib/readline.c lib/string.c lib/syscall.c lib/pgfault.c lib/pfentry.S lib/fork.c lib/ipc.c lib/args.c lib/fd.c lib/file.c lib/fprintf.c lib/pageref.c lib/spawn.c lib/sockets.c lib/nsipc.c lib/malloc.c lib/pipe.c lib/wait.c
+# makefile (from `GNUmakefile', line 70)
+CC := gcc -pipe
+# makefile (from `net/lwip/Makefrag', line 8)
+OBJDIRS :=  boot kern lib user fs net/lwip net/lwip/api net/lwip/core net/lwip/core/ipv4 net/lwip/netif net/lwip/jos/arch net/lwip/jos/jif net/lwip/jos/api
+# makefile (from `GNUmakefile', line 79)
+NCC := gcc  -pipe
+# default
+CHECKOUT,v = +$(if $(wildcard $@),,$(CO) $(COFLAGS) $< $@)
+# makefile (from `boot/Makefrag', line 9)
+BOOT_OBJS := obj/guest/obj/boot/boot.o obj/guest/obj/boot/main.o
+# makefile (from `lib/Makefrag', line 36)
+LIB_OBJFILES := obj/guest/obj/lib/console.o obj/guest/obj/lib/libmain.o obj/guest/obj/lib/exit.o obj/guest/obj/lib/panic.o obj/guest/obj/lib/printf.o obj/guest/obj/lib/printfmt.o obj/guest/obj/lib/readline.o obj/guest/obj/lib/string.o obj/guest/obj/lib/syscall.o obj/guest/obj/lib/pgfault.o  obj/guest/obj/lib/pfentry.o obj/guest/obj/lib/fork.o obj/guest/obj/lib/ipc.o obj/guest/obj/lib/args.o obj/guest/obj/lib/fd.o obj/guest/obj/lib/file.o obj/guest/obj/lib/fprintf.o obj/guest/obj/lib/pageref.o obj/guest/obj/lib/spawn.o obj/guest/obj/lib/sockets.o obj/guest/obj/lib/nsipc.o obj/guest/obj/lib/malloc.o obj/guest/obj/lib/pipe.o obj/guest/obj/lib/wait.o
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# default
+CPP = $(CC) -E
+# default
+LINK.cc = $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) $(TARGET_ARCH)
+# environment
+SSH_CONNECTION = 130.245.203.126 53591 130.245.30.233 130
+# environment
+PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+# makefile (from `fs/Makefrag', line 11)
+ROOTAPPS := obj/guest/obj/user/init
+# makefile (from `GNUmakefile', line 73)
+LD := ld
+# makefile (from `GNUmakefile', line 80)
+NATIVE_CFLAGS :=    -I. -MD -Wall
+# default
+TEXI2DVI = texi2dvi
+# default
+YACC = yacc
+# environment
+SSH_TTY = /dev/pts/0
+# makefile (from `GNUmakefile', line 96)
+CFLAGS :=    -O0 -fno-builtin -I. -MD -fno-omit-frame-pointer -mno-red-zone -Wall -Wno-format -Wno-unused -Werror -gdwarf-2 -I./net/lwip/include -I./net/lwip/include/ipv4 -I./net/lwip/jos -fno-stack-protector
+# default
+ARFLAGS = rv
+# default
+LINK.r = $(FC) $(FFLAGS) $(RFLAGS) $(LDFLAGS) $(TARGET_ARCH)
+# default
+LINT = lint
+# default
+COMPILE.f = $(FC) $(FFLAGS) $(TARGET_ARCH) -c
+# default
+LINT.c = $(LINT) $(LINTFLAGS) $(CPPFLAGS) $(TARGET_ARCH)
+# default
+YACC.y = $(YACC) $(YFLAGS)
+# makefile (from `GNUmakefile', line 72)
+AR := ar
+# makefile (from `GNUmakefile', line 99)
+LDFLAGS := -m elf_x86_64 -z max-page-size=0x1000 --print-gc-sections
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# default
+TANGLE = tangle
+# environment
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:
+# makefile (from `GNUmakefile', line 25)
+LABSETUP = ./
+# default
+GET = get
+# automatic
+%F = $(notdir $%)
+# default
+COMPILE.F = $(FC) $(FFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -c
+# makefile (from `conf/guest/lab.mk', line 1)
+GUEST_KERN = true
+# makefile (from `fs/Makefrag', line 42)
+FSIMGTXTFILES := fs/newmotd fs/motd  fs/motd_guest fs/index.html fs/lorem fs/script fs/testshell.key fs/testshell.sh
+# default
+CTANGLE = ctangle
+# makefile (from `net/Makefrag', line 4)
+NET_SRCFILES := net/timer.c net/input.c net/output.c
+# makefile (from `user/Makefrag', line 4)
+USERLIBS = jos lwip
+# default
+.LIBPATTERNS = lib%.so lib%.a
+# default
+LINK.C = $(LINK.cc)
+# environment
+PWD = /home/cse506/virt_test_task1
+# makefile (from `GNUmakefile', line 105)
+GCC_LIB := /usr/lib/gcc/x86_64-linux-gnu/4.6/libgcc.a
+# default
+LINK.S = $(CC) $(ASFLAGS) $(CPPFLAGS) $(LDFLAGS) $(TARGET_MACH)
+# default
+PREPROCESS.r = $(FC) $(FFLAGS) $(RFLAGS) $(TARGET_ARCH) -F
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# makefile (from `GNUmakefile', line 277)
+KERN_CFLAGS :=    -O0 -fno-builtin -I. -MD -fno-omit-frame-pointer -mno-red-zone -Wall -Wno-format -Wno-unused -Werror -gdwarf-2 -I./net/lwip/include -I./net/lwip/include/ipv4 -I./net/lwip/jos -fno-stack-protector -DJOS_KERNEL -DDWARF_SUPPORT -gdwarf-2 -mcmodel=large -m64 -DVMM_HOST -DVMM_GUEST
+# default
+LINK.c = $(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(TARGET_ARCH)
+# makefile (from `conf/lab.mk', line 1)
+LAB = 8
+# default
+LINK.s = $(CC) $(ASFLAGS) $(LDFLAGS) $(TARGET_MACH)
+# environment
+HOME = /home/cse506
+# makefile (from `fs/Makefrag', line 4)
+FSOFILES := obj/guest/obj/fs/ide.o obj/guest/obj/fs/bc.o obj/guest/obj/fs/fs.o obj/guest/obj/fs/serv.o obj/guest/obj/fs/test.o obj/guest/obj/fs/vmx_host.o 
+# environment
+XDG_SESSION_COOKIE = edf997c9957224635c5c370b0000014d-1417194675.315537-1501982431
+# makefile (from `GNUmakefile', line 81)
+TAR := gtar
+# environment
+LOGNAME = cse506
+# makefile (from `kern/Makefrag', line 58)
+KERN_SRCFILES := kern/entry.S kern/bootstrap.S kern/init.c kern/console.c kern/monitor.c kern/pmap.c kern/env.c kern/kclock.c kern/picirq.c kern/printf.c kern/trap.c kern/trapentry.S kern/sched.c kern/syscall.c kern/kdebug.c lib/printfmt.c lib/readline.c lib/string.c kern/libdwarf_rw.c kern/libdwarf_frame.c kern/libdwarf_lineno.c kern/elf_rw.c kern/mpentry.S kern/mpconfig.c kern/lapic.c kern/spinlock.c kern/e1000.c kern/pci.c kern/time.c vmm/ept.c vmm/vmx.c vmm/vmexits.c
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# makefile (from `GNUmakefile', line 10)
+GUESTOBJDIR := obj/guest/obj
+# makefile (from `kern/Makefrag', line 94)
+KERN_OBJFILES := obj/guest/obj/kern/entry.o obj/guest/obj/kern/bootstrap.o obj/guest/obj/kern/init.o obj/guest/obj/kern/console.o obj/guest/obj/kern/monitor.o obj/guest/obj/kern/pmap.o obj/guest/obj/kern/env.o obj/guest/obj/kern/kclock.o obj/guest/obj/kern/picirq.o obj/guest/obj/kern/printf.o obj/guest/obj/kern/trap.o obj/guest/obj/kern/trapentry.o obj/guest/obj/kern/sched.o obj/guest/obj/kern/syscall.o obj/guest/obj/kern/kdebug.o  obj/guest/obj/kern/printfmt.o  obj/guest/obj/kern/readline.o  obj/guest/obj/kern/string.o obj/guest/obj/kern/libdwarf_rw.o obj/guest/obj/kern/libdwarf_frame.o obj/guest/obj/kern/libdwarf_lineno.o obj/guest/obj/kern/elf_rw.o obj/guest/obj/kern/mpentry.o obj/guest/obj/kern/mpconfig.o obj/guest/obj/kern/lapic.o obj/guest/obj/kern/spinlock.o obj/guest/obj/kern/e1000.o obj/guest/obj/kern/pci.o obj/guest/obj/kern/time.o obj/guest/obj/vmm/ept.o obj/guest/obj/vmm/vmx.o obj/guest/obj/vmm/vmexits.o
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+SHLVL = 1
+# makefile (from `GNUmakefile', line 100)
+BOOT_LDFLAGS := -m elf_i386
+# makefile (from `GNUmakefile', line 76)
+NM := nm
+# makefile (from `GNUmakefile', line 71)
+AS := as
+# default
+PREPROCESS.S = $(CC) -E $(CPPFLAGS)
+# default
+COMPILE.p = $(PC) $(PFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -c
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = cse506
+# default
+FC = f77
+# makefile
+.DEFAULT_GOAL := all
+# makefile (from `GNUmakefile', line 159)
+CPUS = 1
+# makefile (from `net/lwip/Makefrag', line 1)
+LWIP_INCLUDES := -I./net/lwip/include -I./net/lwip/include/ipv4 -I./net/lwip/ext -I./net/lwip/jos -I./inc/
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# makefile (from `GNUmakefile', line 39)
+GCCPREFIX := 
+# default
+WEAVE = weave
+# default
+MAKE_COMMAND := make
+# default
+LINK.cpp = $(LINK.cc)
+# default
+F77 = $(FC)
+# environment
+OLDPWD = /home/cse506/virt_test_task1/obj/guest/obj
+# default
+.VARIABLES := 
+# default
+PC = pc
+# makefile (from `GNUmakefile', line 308)
+PORT80 := 26004
+# automatic
+*F = $(notdir $*)
+# makefile (from `net/lwip/Makefrag', line 18)
+USER_INC = $(LWIP_INCLUDES) $(LWIP_INCLUDES)
+# default
+COMPILE.def = $(M2C) $(M2FLAGS) $(DEFFLAGS) $(TARGET_ARCH)
+# default
+LEX = lex
+# makefile
+MAKEFLAGS = p
+# environment
+MFLAGS = -p
+# environment
+SSH_CLIENT = 130.245.203.126 53591 130
+# environment
+MAIL = /var/mail/cse506
+# default
+LEX.l = $(LEX) $(LFLAGS) -t
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# default
+COMPILE.r = $(FC) $(FFLAGS) $(RFLAGS) $(TARGET_ARCH) -c
+# makefile (from `GNUmakefile', line 75)
+OBJDUMP := objdump
+# automatic
++F = $(notdir $+)
+# default
+M2C = m2c
+# makefile (from `net/Makefrag', line 8)
+NET_OBJFILES :=  obj/guest/obj/net/timer.o  obj/guest/obj/net/input.o  obj/guest/obj/net/output.o
+# makefile (from `GNUmakefile', line 373)
+GRADEFLAGS = -v
+# default
+MAKEFILES := 
+# default
+COMPILE.cc = $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -c
+# automatic
+<F = $(notdir $<)
+# makefile (from `GNUmakefile', line 245)
+OBJDIR := obj/guest/obj
+# default
+CXX = g++
+# makefile (from `GNUmakefile', line 82)
+PERL := perl
+# default
+COFLAGS = 
+# makefile (from `kern/Makefrag', line 96)
+KERN_BINFILES :=  obj/guest/obj/user/hello  obj/guest/obj/user/idle  obj/guest/obj/user/testfilero  obj/guest/obj/user/spawnhello  obj/guest/obj/user/icode  obj/guest/obj/fs/fs  obj/guest/obj/user/testtime  obj/guest/obj/user/httpd  obj/guest/obj/user/echosrv  obj/guest/obj/user/echotest  obj/guest/obj/net/testoutput  obj/guest/obj/net/testinput  obj/guest/obj/net/ns  obj/guest/obj/user/testpteshare  obj/guest/obj/user/testfdsharing  obj/guest/obj/user/testpipe  obj/guest/obj/user/testpiperace  obj/guest/obj/user/testpiperace2  obj/guest/obj/user/primespipe  obj/guest/obj/user/testkbd  obj/guest/obj/user/testshell  obj/guest/obj/user/vmm
+# makefile (from `GNUmakefile', line 125)
+BOOT_CFLAGS :=    -O0 -fno-builtin -I. -MD -fno-omit-frame-pointer -mno-red-zone -Wall -Wno-format -Wno-unused -Werror -gdwarf-2 -I./net/lwip/include -I./net/lwip/include/ipv4 -I./net/lwip/jos -fno-stack-protector -DJOS_KERNEL -gdwarf-2 -m32
+# makefile (from `net/lwip/Makefrag', line 20)
+LWIP_SRCFILES = net/lwip/api/api_lib.c net/lwip/api/api_msg.c net/lwip/api/err.c net/lwip/api/sockets.c net/lwip/api/tcpip.c net/lwip/api/netbuf.c net/lwip/core/init.c net/lwip/core/tcp_in.c net/lwip/core/dhcp.c net/lwip/core/mem.c net/lwip/core/memp.c net/lwip/core/netif.c net/lwip/core/pbuf.c net/lwip/core/raw.c net/lwip/core/stats.c net/lwip/core/sys.c net/lwip/core/tcp.c net/lwip/core/ipv4/ip_addr.c net/lwip/core/ipv4/icmp.c net/lwip/core/ipv4/ip.c net/lwip/core/ipv4/ip_frag.c net/lwip/core/ipv4/inet_chksum.c net/lwip/core/ipv4/inet.c net/lwip/core/tcp_out.c net/lwip/core/udp.c net/lwip/netif/etharp.c net/lwip/netif/loopif.c net/lwip/jos/arch/sys_arch.c net/lwip/jos/arch/thread.c net/lwip/jos/arch/longjmp.S net/lwip/jos/arch/perror.c net/lwip/jos/jif/jif.c  net/lwip/api/api_lib.c net/lwip/api/api_msg.c net/lwip/api/err.c net/lwip/api/sockets.c net/lwip/api/tcpip.c net/lwip/api/netbuf.c net/lwip/core/init.c net/lwip/core/tcp_in.c net/lwip/core/dhcp.c net/lwip/core/mem.c net/lwip/core/memp.c net/lwip/core/netif.c net/lwip/core/pbuf.c net/lwip/core/raw.c net/lwip/core/stats.c net/lwip/core/sys.c net/lwip/core/tcp.c net/lwip/core/ipv4/ip_addr.c net/lwip/core/ipv4/icmp.c net/lwip/core/ipv4/ip.c net/lwip/core/ipv4/ip_frag.c net/lwip/core/ipv4/inet_chksum.c net/lwip/core/ipv4/inet.c net/lwip/core/tcp_out.c net/lwip/core/udp.c net/lwip/netif/etharp.c net/lwip/netif/loopif.c net/lwip/jos/arch/sys_arch.c net/lwip/jos/arch/thread.c net/lwip/jos/arch/longjmp.S net/lwip/jos/arch/perror.c net/lwip/jos/jif/jif.c 
+# default
+COMPILE.C = $(COMPILE.cc)
+# automatic
+^F = $(notdir $^)
+# default
+COMPILE.S = $(CC) $(ASFLAGS) $(CPPFLAGS) $(TARGET_MACH) -c
+# makefile (from `GNUmakefile', line 74)
+OBJCOPY := objcopy
+# default
+LINK.F = $(FC) $(FFLAGS) $(CPPFLAGS) $(LDFLAGS) $(TARGET_ARCH)
+# default
+SUFFIXES := .out .a .ln .o .c .cc .C .cpp .p .f .F .r .y .l .s .S .mod .sym .def .h .info .dvi .tex .texinfo .texi .txinfo .w .ch .web .sh .elc .el
+# default
+COMPILE.c = $(CC) $(CFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -c
+# default
+COMPILE.s = $(AS) $(ASFLAGS) $(TARGET_MACH)
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+MAKELEVEL := 0
+# default
+MAKEINFO = makeinfo
+# makefile (from `kern/Makefrag', line 10)
+KERN_LDFLAGS := -m elf_x86_64 -z max-page-size=0x1000 --print-gc-sections -T kern/kernel.ld -nostdlib --no-gc-sections --print-gc-sections -Map=vivek.map
+# default
+TEX = tex
+# environment
+LANG = en_US.UTF-8
+# environment
+TERM = xterm-256color
+# default
+F77FLAGS = $(FFLAGS)
+# default
+LINK.f = $(FC) $(FFLAGS) $(LDFLAGS) $(TARGET_ARCH)
+# makefile (from `GNUmakefile', line 188)
+BOCHSOPTS = -q $(BOCHSEXTRA)
+# variable set hash-table stats:
+# Load=158/1024=15%, Rehash=0, Collisions=117/806=15%
+
+# Pattern-specific Variable Values
+
+prep-net_% :
+# `override' directive (from `GNUmakefile', line 412)
+# INIT_CFLAGS := -DTEST_NO_NS
+
+# 1 pattern-specific variable values
+# Directories
+
+# lib (device 2049, inode 823447): 28 files, 23 impossibilities.
+# net/lwip/SCCS: could not be stat'd.
+# user (device 2049, inode 826568): 64 files, 1 impossibilities.
+# conf/SCCS: could not be stat'd.
+# SCCS: could not be stat'd.
+# obj/guest/obj/net/lwip/core: could not be stat'd.
+# obj (device 2049, inode 826688): 16 files, no impossibilities so far.
+# . (device 2049, inode 823442): 38 files, no impossibilities.
+# user/SCCS: could not be stat'd.
+# net/lwip/RCS: could not be stat'd.
+# obj/guest/obj/kern: could not be stat'd.
+# obj/guest/obj/fs: could not be stat'd.
+# lib/SCCS: could not be stat'd.
+# fs (device 2049, inode 826669): 20 files, no impossibilities.
+# conf/guest (device 2049, inode 169260): 3 files, no impossibilities.
+# user/RCS: could not be stat'd.
+# lib/RCS: could not be stat'd.
+# kern (device 2049, inode 823493): 55 files, 22 impossibilities.
+# boot (device 2049, inode 826631): 7 files, no impossibilities.
+# obj/guest/obj/net/lwip/jos/jif: could not be stat'd.
+# conf/guest/SCCS: could not be stat'd.
+# vmm (device 2049, inode 35564): 12 files, no impossibilities.
+# obj/guest/obj/net/lwip/api: could not be stat'd.
+# boot/SCCS: could not be stat'd.
+# net (device 2049, inode 826640): 11 files, no impossibilities.
+# kern/SCCS: could not be stat'd.
+# conf/guest/RCS: could not be stat'd.
+# vmm/SCCS: could not be stat'd.
+# obj/guest/obj/net/lwip/jos/arch: could not be stat'd.
+# net/SCCS: could not be stat'd.
+# boot/RCS: could not be stat'd.
+# obj/user (device 2049, inode 933962): 44 files, no impossibilities so far.
+# kern/RCS: could not be stat'd.
+# conf/RCS: could not be stat'd.
+# net/lwip (device 2049, inode 826649): 9 files, no impossibilities.
+# vmm/RCS: could not be stat'd.
+# obj/guest/obj/net/lwip: could not be stat'd.
+# obj/guest/obj/net/lwip/core/ipv4: could not be stat'd.
+# boot/guest (device 2049, inode 826763): No files, no impossibilities so far.
+# obj/guest/obj/user: could not be stat'd.
+# obj/lib (device 2049, inode 826689): 31 files, no impossibilities so far.
+# fs/SCCS: could not be stat'd.
+# net/RCS: could not be stat'd.
+# obj/guest/obj/lib: could not be stat'd.
+# conf (device 2049, inode 35561): 5 files, no impossibilities.
+# fs/RCS: could not be stat'd.
+# obj/guest/obj/net/lwip/jos/api: could not be stat'd.
+# obj/guest/obj/boot: could not be stat'd.
+# RCS: could not be stat'd.
+# obj/guest/obj/net/lwip/netif: could not be stat'd.
+
+# 343 files, 46 impossibilities in 50 directories.
+
+# Implicit Rules
+
+obj/.vars.%: FORCE
+#  commands to execute (from `GNUmakefile', line 142):
+	$(V)echo "$($*)" | cmp -s $@ || echo "$($*)" > $@
+	
+
+obj/boot/%.o: boot/%.c
+#  commands to execute (from `boot/Makefrag', line 12):
+	@echo + cc -Os $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(BOOT_CFLAGS) -Os -c -o $@ $<
+	
+
+obj/boot/%.o: boot/%.S
+#  commands to execute (from `boot/Makefrag', line 17):
+	@echo + as $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(BOOT_CFLAGS) -c -o $@ $<
+	
+
+obj/kern/%.o: kern/%.c obj/.vars.KERN_CFLAGS
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+obj/kern/%.o: kern/%.S obj/.vars.KERN_CFLAGS
+#  commands to execute (from `kern/Makefrag', line 105):
+	@echo + as $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+obj/vmm/%.o: vmm/%.S obj/.vars.KERN_CFLAGS
+#  commands to execute (from `kern/Makefrag', line 110):
+	@echo + as $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+obj/kern/%.o: lib/%.c obj/.vars.KERN_CFLAGS
+#  commands to execute (from `kern/Makefrag', line 115):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+obj/vmm/%.o: vmm/%.c obj/.vars.KERN_CFLAGS
+#  commands to execute (from `kern/Makefrag', line 120):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+obj/lib/%.o: lib/%.c obj/.vars.USER_CFLAGS
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+obj/lib/%.o: lib/%.S obj/.vars.USER_CFLAGS
+#  commands to execute (from `lib/Makefrag', line 44):
+	@echo + as[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+obj/user/%.o: user/%.c obj/.vars.USER_CFLAGS
+#  commands to execute (from `user/Makefrag', line 7):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+obj/user/%: obj/user/%.o obj/lib/entry.o obj/lib/libjos.a obj/lib/liblwip.a user/user.ld
+#  commands to execute (from `user/Makefrag', line 12):
+	@echo + ld $@
+	$(V)$(LD) -o $@.debug $(ULDFLAGS) $(LDFLAGS) -nostdlib $(OBJDIR)/lib/entry.o $@.o -L$(OBJDIR)/lib $(USERLIBS:%=-l%) $(GCC_LIB)
+	$(V)$(OBJDUMP) -S $@.debug > $@.asm
+	$(V)$(NM) -n $@.debug > $@.sym
+	$(V)$(OBJCOPY) --add-gnu-debuglink=$(basename $@.debug) $@.debug $@
+	
+
+obj/fs/%.o: fs/%.c fs/fs.h inc/lib.h obj/.vars.USER_CFLAGS
+#  commands to execute (from `fs/Makefrag', line 55):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+obj/net/lwip/%.o: net/lwip/%.c obj/.vars.USER_CFLAGS
+#  commands to execute (from `net/lwip/Makefrag', line 61):
+	@echo + cc[USER] $<
+	$(V)mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) $(USER_INC) -c -o $@ $<
+	
+
+obj/net/lwip/%.o: net/lwip/%.S obj/.vars.USER_CFLAGS
+#  commands to execute (from `net/lwip/Makefrag', line 66):
+	@echo + as[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+obj/net/%.o: net/%.c net/ns.h obj/.vars.USER_CFLAGS obj/.vars.NET_CFLAGS
+#  commands to execute (from `net/Makefrag', line 11):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) $(NET_CFLAGS) -c -o $@ $<
+	
+
+obj/net/test%: obj/net/test%.o  obj/net/timer.o  obj/net/input.o  obj/net/output.o obj/lib/entry.o obj/lib/libjos.a user/user.ld
+#  commands to execute (from `net/Makefrag', line 23):
+	@echo + ld $@
+	$(V)$(LD) -o $@ $(ULDFLAGS) $(LDFLAGS) -nostdlib \
+	$(OBJDIR)/lib/entry.o $< $(NET_OBJFILES) \
+	-L$(OBJDIR)/lib -ljos -llwip $(GCC_LIB)
+	$(V)$(OBJDUMP) -S $@ >$@.asm
+	
+
+/boot/%.o: boot/guest/%.S
+#  commands to execute (from `vmm/Makefrag', line 6):
+	@echo + as $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(BOOT_CFLAGS) -c -o $@ $<
+	
+
+obj/guest/obj/.vars.%: FORCE
+#  commands to execute (from `GNUmakefile', line 288):
+	$(V)echo "$($*)" | cmp -s $@ || echo "$($*)" > $@
+	
+
+obj/guest/obj/boot/%.o: boot/%.c
+#  commands to execute (from `boot/Makefrag', line 12):
+	@echo + cc -Os $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(BOOT_CFLAGS) -Os -c -o $@ $<
+	
+
+obj/guest/obj/boot/%.o: boot/%.S
+#  commands to execute (from `boot/Makefrag', line 17):
+	@echo + as $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(BOOT_CFLAGS) -c -o $@ $<
+	
+
+obj/guest/obj/kern/%.o: kern/%.c obj/guest/obj/.vars.KERN_CFLAGS
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+obj/guest/obj/kern/%.o: kern/%.S obj/guest/obj/.vars.KERN_CFLAGS
+#  commands to execute (from `kern/Makefrag', line 105):
+	@echo + as $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+obj/guest/obj/vmm/%.o: vmm/%.S obj/guest/obj/.vars.KERN_CFLAGS
+#  commands to execute (from `kern/Makefrag', line 110):
+	@echo + as $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+obj/guest/obj/kern/%.o: lib/%.c obj/guest/obj/.vars.KERN_CFLAGS
+#  commands to execute (from `kern/Makefrag', line 115):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+obj/guest/obj/vmm/%.o: vmm/%.c obj/guest/obj/.vars.KERN_CFLAGS
+#  commands to execute (from `kern/Makefrag', line 120):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+obj/guest/obj/lib/%.o: lib/%.c obj/guest/obj/.vars.USER_CFLAGS
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+obj/guest/obj/lib/%.o: lib/%.S obj/guest/obj/.vars.USER_CFLAGS
+#  commands to execute (from `lib/Makefrag', line 44):
+	@echo + as[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+obj/guest/obj/user/%.o: user/%.c obj/guest/obj/.vars.USER_CFLAGS
+#  commands to execute (from `user/Makefrag', line 7):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+obj/guest/obj/user/%: obj/guest/obj/user/%.o obj/guest/obj/lib/entry.o obj/guest/obj/lib/libjos.a obj/guest/obj/lib/liblwip.a user/user.ld
+#  commands to execute (from `user/Makefrag', line 12):
+	@echo + ld $@
+	$(V)$(LD) -o $@.debug $(ULDFLAGS) $(LDFLAGS) -nostdlib $(OBJDIR)/lib/entry.o $@.o -L$(OBJDIR)/lib $(USERLIBS:%=-l%) $(GCC_LIB)
+	$(V)$(OBJDUMP) -S $@.debug > $@.asm
+	$(V)$(NM) -n $@.debug > $@.sym
+	$(V)$(OBJCOPY) --add-gnu-debuglink=$(basename $@.debug) $@.debug $@
+	
+
+obj/guest/obj/fs/%.o: fs/%.c fs/fs.h inc/lib.h obj/guest/obj/.vars.USER_CFLAGS
+#  commands to execute (from `fs/Makefrag', line 55):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+obj/guest/obj/net/lwip/%.o: net/lwip/%.c obj/guest/obj/.vars.USER_CFLAGS
+#  commands to execute (from `net/lwip/Makefrag', line 61):
+	@echo + cc[USER] $<
+	$(V)mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) $(USER_INC) -c -o $@ $<
+	
+
+obj/guest/obj/net/lwip/%.o: net/lwip/%.S obj/guest/obj/.vars.USER_CFLAGS
+#  commands to execute (from `net/lwip/Makefrag', line 66):
+	@echo + as[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+obj/guest/obj/net/%.o: net/%.c net/ns.h obj/guest/obj/.vars.USER_CFLAGS obj/guest/obj/.vars.NET_CFLAGS
+#  commands to execute (from `net/Makefrag', line 11):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) $(NET_CFLAGS) -c -o $@ $<
+	
+
+obj/guest/obj/net/test%: obj/guest/obj/net/test%.o  obj/guest/obj/net/timer.o  obj/guest/obj/net/input.o  obj/guest/obj/net/output.o obj/guest/obj/lib/entry.o obj/guest/obj/lib/libjos.a user/user.ld
+#  commands to execute (from `net/Makefrag', line 23):
+	@echo + ld $@
+	$(V)$(LD) -o $@ $(ULDFLAGS) $(LDFLAGS) -nostdlib \
+	$(OBJDIR)/lib/entry.o $< $(NET_OBJFILES) \
+	-L$(OBJDIR)/lib -ljos -llwip $(GCC_LIB)
+	$(V)$(OBJDUMP) -S $@ >$@.asm
+	
+
+prep-%:
+#  commands to execute (from `GNUmakefile', line 415):
+	$(V)$(MAKE) "INIT_CFLAGS=${INIT_CFLAGS} -DTEST=`case $* in *_*) echo $*;; *) echo user_$*;; esac`" $(IMAGES)
+	
+
+run-%-nox-gdb: prep-% pre-qemu
+#  commands to execute (from `GNUmakefile', line 418):
+	$(QEMU) -nographic $(QEMUOPTS) -S
+	
+
+run-%-gdb: prep-% pre-qemu
+#  commands to execute (from `GNUmakefile', line 421):
+	$(QEMU) $(QEMUOPTS) -S
+	
+
+run-%-nox: prep-% pre-qemu
+#  commands to execute (from `GNUmakefile', line 424):
+	$(QEMU) -nographic $(QEMUOPTS)
+	
+
+run-%: prep-% pre-qemu
+#  commands to execute (from `GNUmakefile', line 427):
+	$(QEMU) $(QEMUOPTS)
+	
+
+(%): %
+#  commands to execute (built-in):
+	$(AR) $(ARFLAGS) $@ $<
+
+%.out: %
+#  commands to execute (built-in):
+	@rm -f $@ 
+	cp $< $@
+
+%.c: %.w %.ch
+#  commands to execute (built-in):
+	$(CTANGLE) $^ $@
+
+%.tex: %.w %.ch
+#  commands to execute (built-in):
+	$(CWEAVE) $^ $@
+
+%:: %,v
+#  commands to execute (built-in):
+	$(CHECKOUT,v)
+
+%:: RCS/%,v
+#  commands to execute (built-in):
+	$(CHECKOUT,v)
+
+%:: RCS/%
+#  commands to execute (built-in):
+	$(CHECKOUT,v)
+
+%:: s.%
+#  commands to execute (built-in):
+	$(GET) $(GFLAGS) $(SCCS_OUTPUT_OPTION) $<
+
+%:: SCCS/s.%
+#  commands to execute (built-in):
+	$(GET) $(GFLAGS) $(SCCS_OUTPUT_OPTION) $<
+
+# 49 implicit rules, 5 (10.2%) terminal.
+
+# Files
+
+# Not a target:
+kern/e1000.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.338687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/fs/fs.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/fs/fs: obj/fs/ide.o obj/fs/bc.o obj/fs/fs.o obj/fs/serv.o obj/fs/test.o obj/fs/vmx_host.o obj/lib/entry.o obj/lib/libjos.a user/user.ld
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `fs/Makefrag', line 60):
+	@echo + ld $@
+	$(V)mkdir -p $(@D)
+	$(V)$(LD) -o $@ $(ULDFLAGS) $(LDFLAGS) -nostdlib \
+	$(OBJDIR)/lib/entry.o $(FSOFILES) \
+	-L$(OBJDIR)/lib -ljos $(GCC_LIB)
+	$(V)$(OBJDUMP) -S $@ >$@.asm
+	
+
+# Not a target:
+obj/guest/obj/net/testoutput:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/lib/printfmt.o: lib/printfmt.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `printfmt'
+#  Last modified 2014-11-28 14:36:52.010746748
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+.web.p:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(TANGLE) $<
+
+# Not a target:
+obj/user/testpteshare:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib/printfmt.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/user/sh:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/%.o:
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+handin: realclean
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 383):
+	@if [ `git status --porcelain| wc -l` != 0 ] ; then echo "\n\n\n\n\t\tWARNING: YOU HAVE UNCOMMITTED CHANGES\n\n    Consider committing any pending changes and rerunning make handin.\n\n\n\n"; fi
+	git tag -f -a lab$(LAB)-handin -m "Lab$(LAB) Handin"
+	git push --tags handin
+	
+
+# Not a target:
+obj/guest/obj/net/lwip/core/tcp_in.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/kern/mpconfig.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/lib/malloc.o: lib/malloc.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `malloc'
+#  Last modified 2014-11-28 14:36:53.014746796
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/user/testpiperace:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/lib/file.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/lib/panic.o: lib/panic.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `panic'
+#  Last modified 2014-11-28 14:36:51.850746741
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/net/serv.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/kern/picirq.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.l.r:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LEX.l) $< > $@ 
+	mv -f lex.yy.r $@
+
+# Not a target:
+obj/net/lwip/jos/arch/thread.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/lwip/core/tcp_out.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+user/user.ld:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib/Makefrag:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/guest/obj/net/lwip/core/mem.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/net/output.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/user/primespipe:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/user/testtime:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib/pfentry.S:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/net/lwip/core/ipv4/ip.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/kern/kernel.img: obj/kern/kernel obj/boot/boot
+#  Implicit rule search has not been done.
+#  Last modified 2014-11-28 14:16:13.414687687
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/22=0%
+#  commands to execute (from `kern/Makefrag', line 139):
+	@echo + mk $@
+	$(V)dd if=/dev/zero of=$(OBJDIR)/kern/kernel.img~ bs=512 count=20000 2>/dev/null
+	$(V)dd if=$(OBJDIR)/boot/boot of=$(OBJDIR)/kern/kernel.img~ conv=notrunc 2>/dev/null
+	$(V)dd if=$(OBJDIR)/kern/kernel of=$(OBJDIR)/kern/kernel.img~ seek=1 conv=notrunc 2>/dev/null
+	$(V)mv $(OBJDIR)/kern/kernel.img~ $(OBJDIR)/kern/kernel.img
+	
+
+obj/guest/obj/lib/libjos.a: obj/guest/obj/lib/console.o obj/guest/obj/lib/libmain.o obj/guest/obj/lib/exit.o obj/guest/obj/lib/panic.o obj/guest/obj/lib/printf.o obj/guest/obj/lib/printfmt.o obj/guest/obj/lib/readline.o obj/guest/obj/lib/string.o obj/guest/obj/lib/syscall.o obj/guest/obj/lib/pgfault.o obj/guest/obj/lib/pfentry.o obj/guest/obj/lib/fork.o obj/guest/obj/lib/ipc.o obj/guest/obj/lib/args.o obj/guest/obj/lib/fd.o obj/guest/obj/lib/file.o obj/guest/obj/lib/fprintf.o obj/guest/obj/lib/pageref.o obj/guest/obj/lib/spawn.o obj/guest/obj/lib/sockets.o obj/guest/obj/lib/nsipc.o obj/guest/obj/lib/malloc.o obj/guest/obj/lib/pipe.o obj/guest/obj/lib/wait.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `lib/Makefrag', line 49):
+	@echo + ar $@
+	$(V)$(AR) r $@ $(LIB_OBJFILES)
+	
+
+obj/kern/libdwarf_rw.o: kern/libdwarf_rw.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `libdwarf_rw'
+#  Last modified 2014-11-28 14:36:50.806746691
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/guest/obj/lib/exit.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/user/icode:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/kern/e1000.o: kern/e1000.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `e1000'
+#  Last modified 2014-11-28 14:36:51.390746719
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/guest/obj/lib/string.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.F.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.F) $(OUTPUT_OPTION) $<
+
+# Not a target:
+obj/guest/obj/lib/fork.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/lib/printf.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+kern/syscall.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:36:46.878746504
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+all: obj/kern/kernel.img obj/fs/fs.img obj/guest/obj/kern/kernel obj/guest/obj/fs/fs.img
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/22=0%
+
+# Not a target:
+.y.ln:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(YACC.y) $< 
+	$(LINT.c) -C$* y.tab.c 
+	$(RM) y.tab.c
+
+# Not a target:
+.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.o) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+FORCE:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+obj/guest/obj/kern/entry.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib/wait.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/user/forktree:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/kern/elf_rw.o: kern/elf_rw.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `elf_rw'
+#  Last modified 2014-11-28 14:36:51.130746706
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+.def.sym:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.def) -o $@ $<
+
+# Not a target:
+obj/guest/obj/lib/pgfault.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/kern/monitor.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/user/primes:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/lib/pfentry.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib/console.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+.PHONY: FORCE FORCE all always handin tarball clean realclean distclean grade handin-prep handin-check
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/guest/obj/.deps:
+#  A default, MAKEFILES, or -include/sinclude makefile.
+#  Implicit rule search has not been done.
+#  Last modified 2014-11-28 14:52:16.938790852
+#  File has been updated.
+#  Successfully updated.
+#  commands to execute (from `GNUmakefile', line 451):
+	@mkdir -p $(@D)
+	@$(PERL) mergedep.pl $@ $^
+	
+
+obj/guest/obj/fs/fsformat: fs/fsformat.c
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `fs/Makefrag', line 69):
+	@echo + mk $(OBJDIR)/fs/fsformat
+	$(V)mkdir -p $(@D)
+	$(V)$(NCC) $(NATIVE_CFLAGS) -o $(OBJDIR)/fs/fsformat fs/fsformat.c
+	
+
+# Not a target:
+obj/guest/obj/user/echosrv:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+pre-qemu: .gdbinit
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 181):
+	@rm -f qemu.pcap
+	
+
+obj/kern/string.o: lib/string.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `string'
+#  Last modified 2014-11-28 14:36:50.662746684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 115):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/user/testfdsharing:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/boot/boot.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+bochs-gdb: obj/kern/kernel.img obj/fs/fs.img bochsrc
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 203):
+	$(BOCHS) $(BOCHSOPTS) 'gdbstub: enabled=1, port=1234'
+	
+
+# Not a target:
+obj/guest/obj/user/%.o:
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/guest/obj/boot/boot: obj/guest/obj/boot/boot.o obj/guest/obj/boot/main.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `boot/Makefrag', line 22):
+	@echo + ld $(OBJDIR)/boot/boot
+	$(V)$(LD) $(BOOT_LDFLAGS) -N -e start -Ttext 0x7c00 -o $@.out $^
+	$(V)$(OBJDUMP) -S $@.out >$@.asm
+	$(V)$(OBJCOPY) -S -O binary -j .text $@.out $@
+	$(V)perl boot/sign.pl $(OBJDIR)/boot/boot
+	
+
+# Not a target:
+.p.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.p) $(OUTPUT_OPTION) $<
+
+# Not a target:
+.p:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.p) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+# Not a target:
+obj/net/lwip/api/err.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.txinfo.dvi:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(TEXI2DVI) $(TEXI2DVI_FLAGS) $<
+
+obj/kern/picirq.o: kern/picirq.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `picirq'
+#  Last modified 2014-11-28 14:35:18.238742277
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+obj/kern/sched.o: kern/sched.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sched'
+#  Last modified 2014-11-28 14:35:18.474742288
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/guest/obj/lib/fprintf.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+handin-check:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 388):
+	@if test "$$(git symbolic-ref HEAD)" != refs/heads/lab$(LAB); then \
+	git branch; \
+	read -p "You are not on the lab$(LAB) branch.  Hand-in the current branch? [y/N] " r; \
+	test "$$r" = y; \
+	fi
+	@if ! git diff-files --quiet || ! git diff-index --quiet --cached HEAD; then \
+	git status; \
+	echo; \
+	echo "You have uncomitted changes.  Please commit or stash them."; \
+	false; \
+	fi
+	@if test -n "`git ls-files -o --exclude-standard`"; then \
+	git status; \
+	read -p "Untracked files will not be handed in.  Continue? [y/N] " r; \
+	test "$$r" = y; \
+	fi
+	
+
+.PRECIOUS: %.o obj/boot/%.o obj/kern/%.o obj/lib/%.o obj/fs/%.o obj/net/%.o obj/user/%.o obj/.vars.% %.o obj/guest/obj/boot/%.o obj/guest/obj/kern/%.o obj/guest/obj/lib/%.o obj/guest/obj/fs/%.o obj/guest/obj/net/%.o obj/guest/obj/user/%.o obj/guest/obj/.vars.%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+handin-prep:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 409):
+	@./handin-prep
+	
+
+# Not a target:
+kern/spinlock.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.338687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/guest/obj/kern/lapic.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/kern/readline.o: lib/readline.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `readline'
+#  Last modified 2014-11-28 14:36:50.57874668
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 115):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+lib/file.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+obj/kern/syscall.o: kern/syscall.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `syscall'
+#  Last modified 2014-11-28 14:36:50.346746669
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/guest/obj/net/lwip/core/udp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/user/idle:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/guest/obj/kern/init.o: obj/guest/obj/.vars.INIT_CFLAGS
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+# `override' directive (from `kern/Makefrag', line 125)
+# KERN_CFLAGS += $(INIT_CFLAGS)
+# variable set hash-table stats:
+# Load=1/32=3%, Rehash=0, Collisions=0/2=0%
+
+# Not a target:
+obj/guest/obj/kern/libdwarf_frame.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+kern/picirq.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.338687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/guest/obj/fs/vmx_host.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.l.ln:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	@$(RM) $*.c
+	$(LEX.l) $< > $*.c
+	$(LINT.c) -i $*.c -o $@
+	$(RM) $*.c
+
+# Not a target:
+obj/user/primespipe:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+kern/console.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.338687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+distclean: realclean
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 370):
+	rm -rf conf/gcc.mk
+	
+
+print-gdbport:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 234):
+	@echo $(GDBPORT)
+	
+
+# Not a target:
+.w.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(CTANGLE) $< - $@
+
+# Not a target:
+.texi.dvi:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(TEXI2DVI) $(TEXI2DVI_FLAGS) $<
+
+obj/kern/entry.o: kern/entry.S obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `entry'
+#  Last modified 2014-11-28 14:35:17.438742239
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+#  commands to execute (from `kern/Makefrag', line 105):
+	@echo + as $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+.sh:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	cat $< >$@ 
+	chmod a+x $@
+
+obj/guest/obj/fs/clean-fs.img: obj/guest/obj/fs/fsformat fs/newmotd fs/motd fs/motd_guest fs/index.html fs/lorem fs/script fs/testshell.key fs/testshell.sh obj/user/cat obj/user/echo obj/user/ls obj/user/lsfd obj/user/num obj/user/forktree obj/user/primes obj/user/primespipe obj/user/sh obj/user/testfdsharing obj/user/testkbd obj/user/testpipe obj/user/testpteshare obj/user/testshell obj/user/hello obj/user/vmm obj/guest/obj/user/cat obj/guest/obj/user/echo obj/guest/obj/user/ls obj/guest/obj/user/lsfd obj/guest/obj/user/num obj/guest/obj/user/forktree obj/guest/obj/user/primes obj/guest/obj/user/primespipe obj/guest/obj/user/sh obj/guest/obj/user/testfdsharing obj/guest/obj/user/testkbd obj/guest/obj/user/testpipe obj/guest/obj/user/testpteshare obj/guest/obj/user/testshell obj/guest/obj/user/hello obj/guest/obj/user/vmm obj/guest/obj/user/init
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `fs/Makefrag', line 74):
+	@echo + mk $(OBJDIR)/fs/clean-fs.img
+	$(V)mkdir -p $(@D)
+	$(V)$(OBJDIR)/fs/fsformat $(OBJDIR)/fs/clean-fs.img 1024 $(FSIMGTXTFILES) -b $(USERAPPS) -sb $(ROOTAPPS)
+	
+
+obj/guest/obj/jos-grub: obj/guest/obj/kern/kernel
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `kern/Makefrag', line 157):
+	@echo + oc $@
+	$(V)$(OBJCOPY) --adjust-vma=0x10000000 $^ $@
+	
+
+# Not a target:
+obj/guest/obj/user/lsfd:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/user/vmm:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/fs/test.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/guest/obj/kern/kernel: obj/guest/obj/kern/entry.o obj/guest/obj/kern/bootstrap.o obj/guest/obj/kern/init.o obj/guest/obj/kern/console.o obj/guest/obj/kern/monitor.o obj/guest/obj/kern/pmap.o obj/guest/obj/kern/env.o obj/guest/obj/kern/kclock.o obj/guest/obj/kern/picirq.o obj/guest/obj/kern/printf.o obj/guest/obj/kern/trap.o obj/guest/obj/kern/trapentry.o obj/guest/obj/kern/sched.o obj/guest/obj/kern/syscall.o obj/guest/obj/kern/kdebug.o obj/guest/obj/kern/printfmt.o obj/guest/obj/kern/readline.o obj/guest/obj/kern/string.o obj/guest/obj/kern/libdwarf_rw.o obj/guest/obj/kern/libdwarf_frame.o obj/guest/obj/kern/libdwarf_lineno.o obj/guest/obj/kern/elf_rw.o obj/guest/obj/kern/mpentry.o obj/guest/obj/kern/mpconfig.o obj/guest/obj/kern/lapic.o obj/guest/obj/kern/spinlock.o obj/guest/obj/kern/e1000.o obj/guest/obj/kern/pci.o obj/guest/obj/kern/time.o obj/guest/obj/vmm/ept.o obj/guest/obj/vmm/vmx.o obj/guest/obj/vmm/vmexits.o obj/guest/obj/user/hello obj/guest/obj/user/idle obj/guest/obj/user/testfilero obj/guest/obj/user/spawnhello obj/guest/obj/user/icode obj/guest/obj/fs/fs obj/guest/obj/user/testtime obj/guest/obj/user/httpd obj/guest/obj/user/echosrv obj/guest/obj/user/echotest obj/guest/obj/net/testoutput obj/guest/obj/net/testinput obj/guest/obj/net/ns obj/guest/obj/user/testpteshare obj/guest/obj/user/testfdsharing obj/guest/obj/user/testpipe obj/guest/obj/user/testpiperace obj/guest/obj/user/testpiperace2 obj/guest/obj/user/primespipe obj/guest/obj/user/testkbd obj/guest/obj/user/testshell obj/guest/obj/user/vmm kern/kernel.ld obj/guest/obj/.vars.KERN_LDFLAGS
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `kern/Makefrag', line 131):
+	@echo + ld $@
+	$(V)$(LD) -o $@ $(KERN_LDFLAGS) $(KERN_OBJFILES) $(GCC_LIB) -b binary $(KERN_BINFILES)
+	$(V)$(OBJDUMP) -S $@ > $@.asm
+	$(V)$(NM) -n $@ > $@.sym
+	
+
+# Not a target:
+obj/fs/bc.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/kern/trapentry.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/net/lwip/jos/arch/perror.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.cc:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.cc) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+# Not a target:
+obj/user/testpipe:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib/string.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/net/lwip/core/init.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib/fork.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+lib/fprintf.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.cc.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.cc) $(OUTPUT_OPTION) $<
+
+# Not a target:
+obj/guest/obj/net/lwip/api/api_lib.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/lib/args.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/kern/printf.o: kern/printf.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `printf'
+#  Last modified 2014-11-28 14:35:18.274742279
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/guest/obj/lib/fd.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/user/spawnhello:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+qemu: obj/kern/kernel.img obj/fs/fs.img pre-qemu
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 210):
+	$(QEMU) $(QEMUOPTS)
+	
+
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/kern/mpconfig.o: kern/mpconfig.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `mpconfig'
+#  Last modified 2014-11-28 14:36:51.230746711
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/guest/obj/net/input.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/lib/file.o: lib/file.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `file'
+#  Last modified 2014-11-28 14:36:52.694746781
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/guest/obj/net/lwip/core/dhcp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/kern/printfmt.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib/pgfault.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+kern/monitor.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:24:55.646712589
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/guest/obj/net/lwip/netif/loopif.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+kern/trap.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.338687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.c.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.c) $(OUTPUT_OPTION) $<
+
+# Not a target:
+%.o:
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/.vars.%:
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+realclean: clean
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 365):
+	rm -rf lab$(LAB).tar.gz \
+	jos.out $(wildcard jos.out.*) \
+	qemu.pcap $(wildcard qemu.pcap.*)
+	
+
+obj/kern/time.o: kern/time.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `time'
+#  Last modified 2014-11-28 14:36:51.510746724
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+.r.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.r) $(OUTPUT_OPTION) $<
+
+obj/lib/nsipc.o: lib/nsipc.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `nsipc'
+#  Last modified 2014-11-28 14:36:52.962746794
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+always:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 457):
+	@:
+	
+
+# Not a target:
+.r:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.r) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+# Not a target:
+obj/guest/obj/fs/ide.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/kern/kdebug.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+print-qemu:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 231):
+	@echo $(QEMU)
+	
+
+bochs-nox: obj/kern/kernel.img obj/fs/fs.img bochsrc
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 200):
+	$(BOCHS) $(BOCHSOPTS) 'display_library: term'
+	
+
+# Not a target:
+obj/kern/kernel.asm:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/lib/libjos.a: obj/lib/console.o obj/lib/libmain.o obj/lib/exit.o obj/lib/panic.o obj/lib/printf.o obj/lib/printfmt.o obj/lib/readline.o obj/lib/string.o obj/lib/syscall.o obj/lib/pgfault.o obj/lib/pfentry.o obj/lib/fork.o obj/lib/ipc.o obj/lib/args.o obj/lib/fd.o obj/lib/file.o obj/lib/fprintf.o obj/lib/pageref.o obj/lib/spawn.o obj/lib/sockets.o obj/lib/nsipc.o obj/lib/malloc.o obj/lib/pipe.o obj/lib/wait.o
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `'
+#  Modification time never checked.
+#  File has been updated.
+#  Failed to be updated.
+# automatic
+# @ := obj/lib/libjos.a
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := obj/lib/console.o obj/lib/libmain.o obj/lib/exit.o obj/lib/panic.o obj/lib/printf.o obj/lib/printfmt.o obj/lib/readline.o obj/lib/string.o obj/lib/syscall.o obj/lib/pgfault.o obj/lib/pfentry.o obj/lib/fork.o obj/lib/ipc.o obj/lib/args.o obj/lib/fd.o obj/lib/file.o obj/lib/fprintf.o obj/lib/pageref.o obj/lib/spawn.o obj/lib/sockets.o obj/lib/nsipc.o obj/lib/malloc.o obj/lib/pipe.o obj/lib/wait.o
+# automatic
+# | := 
+# automatic
+# < := obj/lib/console.o
+# automatic
+# ^ := obj/lib/console.o obj/lib/libmain.o obj/lib/exit.o obj/lib/panic.o obj/lib/printf.o obj/lib/printfmt.o obj/lib/readline.o obj/lib/string.o obj/lib/syscall.o obj/lib/pgfault.o obj/lib/pfentry.o obj/lib/fork.o obj/lib/ipc.o obj/lib/args.o obj/lib/fd.o obj/lib/file.o obj/lib/fprintf.o obj/lib/pageref.o obj/lib/spawn.o obj/lib/sockets.o obj/lib/nsipc.o obj/lib/malloc.o obj/lib/pipe.o obj/lib/wait.o
+# automatic
+# ? := obj/lib/console.o obj/lib/libmain.o obj/lib/exit.o obj/lib/panic.o obj/lib/printf.o obj/lib/printfmt.o obj/lib/readline.o obj/lib/string.o obj/lib/syscall.o obj/lib/pgfault.o obj/lib/pfentry.o obj/lib/fork.o obj/lib/ipc.o obj/lib/args.o obj/lib/fd.o obj/lib/file.o obj/lib/fprintf.o obj/lib/pageref.o obj/lib/spawn.o obj/lib/sockets.o obj/lib/nsipc.o obj/lib/malloc.o obj/lib/pipe.o obj/lib/wait.o
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/17=6%
+#  commands to execute (from `lib/Makefrag', line 49):
+	@echo + ar $@
+	$(V)$(AR) r $@ $(LIB_OBJFILES)
+	
+
+# Not a target:
+lib/exit.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+nc-80:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 435):
+	nc localhost $(PORT80)
+	
+
+obj/guest/obj/lib/liblwip.a: obj/guest/obj/net/lwip/api/api_lib.o obj/guest/obj/net/lwip/api/api_msg.o obj/guest/obj/net/lwip/api/err.o obj/guest/obj/net/lwip/api/sockets.o obj/guest/obj/net/lwip/api/tcpip.o obj/guest/obj/net/lwip/api/netbuf.o obj/guest/obj/net/lwip/core/init.o obj/guest/obj/net/lwip/core/tcp_in.o obj/guest/obj/net/lwip/core/dhcp.o obj/guest/obj/net/lwip/core/mem.o obj/guest/obj/net/lwip/core/memp.o obj/guest/obj/net/lwip/core/netif.o obj/guest/obj/net/lwip/core/pbuf.o obj/guest/obj/net/lwip/core/raw.o obj/guest/obj/net/lwip/core/stats.o obj/guest/obj/net/lwip/core/sys.o obj/guest/obj/net/lwip/core/tcp.o obj/guest/obj/net/lwip/core/ipv4/ip_addr.o obj/guest/obj/net/lwip/core/ipv4/icmp.o obj/guest/obj/net/lwip/core/ipv4/ip.o obj/guest/obj/net/lwip/core/ipv4/ip_frag.o obj/guest/obj/net/lwip/core/ipv4/inet_chksum.o obj/guest/obj/net/lwip/core/ipv4/inet.o obj/guest/obj/net/lwip/core/tcp_out.o obj/guest/obj/net/lwip/core/udp.o obj/guest/obj/net/lwip/netif/etharp.o obj/guest/obj/net/lwip/netif/loopif.o obj/guest/obj/net/lwip/jos/arch/sys_arch.o obj/guest/obj/net/lwip/jos/arch/thread.o obj/guest/obj/net/lwip/jos/arch/longjmp.o obj/guest/obj/net/lwip/jos/arch/perror.o obj/guest/obj/net/lwip/jos/jif/jif.o obj/guest/obj/net/lwip/api/api_lib.o obj/guest/obj/net/lwip/api/api_msg.o obj/guest/obj/net/lwip/api/err.o obj/guest/obj/net/lwip/api/sockets.o obj/guest/obj/net/lwip/api/tcpip.o obj/guest/obj/net/lwip/api/netbuf.o obj/guest/obj/net/lwip/core/init.o obj/guest/obj/net/lwip/core/tcp_in.o obj/guest/obj/net/lwip/core/dhcp.o obj/guest/obj/net/lwip/core/mem.o obj/guest/obj/net/lwip/core/memp.o obj/guest/obj/net/lwip/core/netif.o obj/guest/obj/net/lwip/core/pbuf.o obj/guest/obj/net/lwip/core/raw.o obj/guest/obj/net/lwip/core/stats.o obj/guest/obj/net/lwip/core/sys.o obj/guest/obj/net/lwip/core/tcp.o obj/guest/obj/net/lwip/core/ipv4/ip_addr.o obj/guest/obj/net/lwip/core/ipv4/icmp.o obj/guest/obj/net/lwip/core/ipv4/ip.o obj/guest/obj/net/lwip/core/ipv4/ip_frag.o obj/guest/obj/net/lwip/core/ipv4/inet_chksum.o obj/guest/obj/net/lwip/core/ipv4/inet.o obj/guest/obj/net/lwip/core/tcp_out.o obj/guest/obj/net/lwip/core/udp.o obj/guest/obj/net/lwip/netif/etharp.o obj/guest/obj/net/lwip/netif/loopif.o obj/guest/obj/net/lwip/jos/arch/sys_arch.o obj/guest/obj/net/lwip/jos/arch/thread.o obj/guest/obj/net/lwip/jos/arch/longjmp.o obj/guest/obj/net/lwip/jos/arch/perror.o obj/guest/obj/net/lwip/jos/jif/jif.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `net/lwip/Makefrag', line 71):
+	@echo + ar $@
+	$(V)mkdir -p $(@D)
+	$(V)$(AR) r $@ $(LWIP_OBJFILES)
+	
+
+obj/lib/exit.o: lib/exit.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `exit'
+#  Last modified 2014-11-28 14:36:51.790746738
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+kern/pmap.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:25:39.48671468
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+lib/printf.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+telnet-7:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 444):
+	telnet localhost $(PORT7)
+	
+
+# Not a target:
+kern/lapic.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.338687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.gdbinit.tmpl:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/lib/console.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/net/lwip/core/raw.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/user/testfdsharing:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+kern/printf.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.338687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/guest/obj/user/testpipe:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+kern/init.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:23:20.45870805
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+fs/fsformat.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib/ipc.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:27:21.20271953
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+tarball: handin-check
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 406):
+	git archive --format=tar HEAD | gzip > lab$(LAB)-handin.tar.gz
+	
+
+# Not a target:
+obj/user/num:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/lwip/netif/loopif.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/lib/pgfault.o: lib/pgfault.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `pgfault'
+#  Last modified 2014-11-28 14:36:52.298746762
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+obj/kern/monitor.o: kern/monitor.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `monitor'
+#  Last modified 2014-11-28 14:35:17.762742254
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/guest/obj/net/lwip/core/tcp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/lib/pfentry.o: lib/pfentry.S obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `pfentry'
+#  Last modified 2014-11-28 14:36:52.338746764
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 44):
+	@echo + as[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+user/hello.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.338687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/guest/obj/lib/entry.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+grade:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 377):
+	@echo $(MAKE) clean
+	@$(MAKE) clean || \
+	(echo "'make clean' failed.  HINT: Do you have another running instance of JOS?" && exit 1)
+	./grade-lab$(LAB) $(GRADEFLAGS)
+	
+
+obj/fs/fsformat: fs/fsformat.c
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `fs/Makefrag', line 69):
+	@echo + mk $(OBJDIR)/fs/fsformat
+	$(V)mkdir -p $(@D)
+	$(V)$(NCC) $(NATIVE_CFLAGS) -o $(OBJDIR)/fs/fsformat fs/fsformat.c
+	
+
+# Not a target:
+obj/guest/obj/lib/%.o:
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/user/echosrv:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/lib/pipe.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/net/lwip/core/netif.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/boot/boot.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/kern/spinlock.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib/sockets.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.l.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	@$(RM) $@ 
+	$(LEX.l) $< > $@
+
+# Not a target:
+obj/user/%.o:
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/boot/boot: obj/boot/boot.o obj/boot/main.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `boot/Makefrag', line 22):
+	@echo + ld $(OBJDIR)/boot/boot
+	$(V)$(LD) $(BOOT_LDFLAGS) -N -e start -Ttext 0x7c00 -o $@.out $^
+	$(V)$(OBJDUMP) -S $@.out >$@.asm
+	$(V)$(OBJCOPY) -S -O binary -j .text $@.out $@
+	$(V)perl boot/sign.pl $(OBJDIR)/boot/boot
+	
+
+# Not a target:
+boot/Makefrag:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.342687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/guest/obj/vmm/vmexits.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+kern/Makefrag:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:23:44.074709177
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/guest/obj/kern/env.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/lib/fprintf.o: lib/fprintf.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `fprintf'
+#  Last modified 2014-11-28 14:36:52.742746783
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+obj/guest/obj/net/ns: obj/guest/obj/net/serv.o obj/guest/obj/net/timer.o obj/guest/obj/net/input.o obj/guest/obj/net/output.o obj/guest/obj/lib/entry.o obj/guest/obj/lib/libjos.a obj/guest/obj/lib/liblwip.a user/user.ld
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `net/Makefrag', line 16):
+	@echo + ld $@
+	$(V)$(LD) -o $@ $(ULDFLAGS) $(LDFLAGS) -nostdlib \
+	$(OBJDIR)/lib/entry.o $< $(NET_OBJFILES) \
+	-L$(OBJDIR)/lib -ljos -llwip $(GCC_LIB)
+	$(V)$(OBJDUMP) -S $@ >$@.asm
+	
+
+obj/guest/obj/fs/fs.img: obj/guest/obj/fs/clean-fs.img
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `fs/Makefrag', line 84):
+	@echo + cp $(OBJDIR)/fs/clean-fs.img $@
+	$(V)cp $(OBJDIR)/fs/clean-fs.img $@
+	
+
+# Not a target:
+obj/guest/obj/kern/pmap.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/user/testpiperace2:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/kern/lapic.o: kern/lapic.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `lapic'
+#  Last modified 2014-11-28 14:36:51.290746714
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+qemu-nox-gdb: obj/kern/kernel.img obj/fs/fs.img pre-qemu
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 225):
+	@echo "***"
+	@echo "*** Now run 'gdb'." 1>&2
+	@echo "***"
+	$(QEMU) -nographic $(QEMUOPTS) -S
+	
+
+# Not a target:
+fs/script:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/kern/string.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/lwip/core/udp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/net/lwip/core/sys.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/lib/console.o: lib/console.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `console'
+#  Last modified 2014-11-28 14:36:51.670746732
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+obj/kern/init.o: kern/init.c obj/.vars.KERN_CFLAGS obj/.vars.INIT_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `init'
+#  Last modified 2014-11-28 14:35:17.570742245
+#  File has been updated.
+#  Successfully updated.
+# `override' directive (from `kern/Makefrag', line 125)
+# KERN_CFLAGS += $(INIT_CFLAGS)
+# variable set hash-table stats:
+# Load=1/32=3%, Rehash=0, Collisions=0/7=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/guest/obj/net/lwip/jos/jif/jif.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/kern/libdwarf_frame.o: kern/libdwarf_frame.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `libdwarf_frame'
+#  Last modified 2014-11-28 14:36:50.962746698
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+.C:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.C) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+# Not a target:
+obj/guest/obj/net/lwip/jos/arch/sys_arch.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/lib/ipc.o: lib/ipc.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `ipc'
+#  Last modified 2014-11-28 14:36:52.498746772
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+lib/args.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.r.f:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(PREPROCESS.r) $(OUTPUT_OPTION) $<
+
+obj/kern/printfmt.o: lib/printfmt.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `printfmt'
+#  Last modified 2014-11-28 14:36:50.526746678
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 115):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/guest/obj/vmm/vmx.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/lib/string.o: lib/string.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `string'
+#  Last modified 2014-11-28 14:36:52.154746755
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+.S:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.S) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+# Not a target:
+fs/motd:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/fs/clean-fs.img: obj/fs/fsformat fs/newmotd fs/motd fs/robig fs/index.html fs/lorem fs/script fs/testshell.key fs/testshell.sh obj/user/cat obj/user/echo obj/user/ls obj/user/lsfd obj/user/num obj/user/forktree obj/user/primes obj/user/primespipe obj/user/sh obj/user/testfdsharing obj/user/testkbd obj/user/testpipe obj/user/testpteshare obj/user/testshell obj/user/hello obj/user/vmm obj/user/init
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `fs/Makefrag', line 74):
+	@echo + mk $(OBJDIR)/fs/clean-fs.img
+	$(V)mkdir -p $(@D)
+	$(V)$(OBJDIR)/fs/fsformat $(OBJDIR)/fs/clean-fs.img 4096  $(FSIMGTXTFILES) -b $(USERAPPS) -sb $(ROOTAPPS)
+	
+
+obj/jos-grub: obj/kern/kernel
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `kern/Makefrag', line 157):
+	@echo + oc $@
+	$(V)$(OBJCOPY) --adjust-vma=0x10000000 $^ $@
+	
+
+# Not a target:
+obj/guest/obj/net/lwip/api/api_msg.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+fs/Makefrag:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:35:15.830742162
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.texinfo.info:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(MAKEINFO) $(MAKEINFO_FLAGS) $< -o $@
+
+obj/kern/kernel: obj/kern/entry.o obj/kern/bootstrap.o obj/kern/init.o obj/kern/console.o obj/kern/monitor.o obj/kern/pmap.o obj/kern/env.o obj/kern/kclock.o obj/kern/picirq.o obj/kern/printf.o obj/kern/trap.o obj/kern/trapentry.o obj/kern/sched.o obj/kern/syscall.o obj/kern/kdebug.o obj/kern/printfmt.o obj/kern/readline.o obj/kern/string.o obj/kern/libdwarf_rw.o obj/kern/libdwarf_frame.o obj/kern/libdwarf_lineno.o obj/kern/elf_rw.o obj/kern/mpentry.o obj/kern/mpconfig.o obj/kern/lapic.o obj/kern/spinlock.o obj/kern/e1000.o obj/kern/pci.o obj/kern/time.o obj/user/hello obj/user/idle obj/user/testfilero obj/user/spawnhello obj/user/icode obj/fs/fs obj/user/testtime obj/user/httpd obj/user/echosrv obj/user/echotest obj/net/testoutput obj/net/testinput obj/net/ns obj/user/testpteshare obj/user/testfdsharing obj/user/testpipe obj/user/testpiperace obj/user/testpiperace2 obj/user/primespipe obj/user/testkbd obj/user/testshell kern/kernel.ld obj/.vars.KERN_LDFLAGS
+#  Implicit rule search has not been done.
+#  Last modified 2014-11-28 14:16:13.426687688
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/22=0%
+#  commands to execute (from `kern/Makefrag', line 131):
+	@echo + ld $@
+	$(V)$(LD) -o $@ $(KERN_LDFLAGS) $(KERN_OBJFILES) $(GCC_LIB) -b binary $(KERN_BINFILES)
+	$(V)$(OBJDUMP) -S $@ > $@.asm
+	$(V)$(NM) -n $@ > $@.sym
+	
+
+# Not a target:
+.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.c) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+obj/kern/trapentry.o: kern/trapentry.S obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `trapentry'
+#  Last modified 2014-11-28 14:35:18.430742286
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 105):
+	@echo + as $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/net/lwip/jos/arch/perror.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/user/hello.o: user/hello.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `hello'
+#  Last modified 2014-11-28 14:36:51.562746727
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+#  commands to execute (from `user/Makefrag', line 7):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/guest/obj/net/lwip/api/netbuf.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.w.tex:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(CWEAVE) $< - $@
+
+# Not a target:
+obj/guest/obj/kern/libdwarf_rw.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.c.ln:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINT.c) -C$* $<
+
+# Not a target:
+.s.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.s) -o $@ $<
+
+# Not a target:
+obj/guest/obj/kern/pci.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.s:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.s) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+obj/lib/args.o: lib/args.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `args'
+#  Last modified 2014-11-28 14:36:52.558746774
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+lib/malloc.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+obj/lib/fd.o: lib/fd.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `fd'
+#  Last modified 2014-11-28 14:36:52.642746778
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/user/spawnhello:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/lib/sockets.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib/entry.S:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/guest/obj/vmm/ept.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/lwip/jos/arch/longjmp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/net/lwip/core/ipv4/ip_addr.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/kern/printf.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.gdbinit: obj/kern/kernel.asm .gdbinit.tmpl
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 176):
+	$(eval LONGMODE := $(shell grep -C1 '<jumpto_longmode>:' '$(OBJDIR)/kern/kernel.asm' | sed 's/^\([0-9a-f]*\).*/\1/g'))
+	sed -e "s/localhost:1234/localhost:$(GDBPORT)/" -e "s/jumpto_longmode/*0x$(LONGMODE)/" < $^ > $@
+	
+
+# Not a target:
+lib/fd.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/net/lwip/core/pbuf.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/fs/%.o:
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+kern/time.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.338687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+grub: obj/jos-grub obj/guest/obj/jos-grub
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/kern/%.o:
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/net/lwip/core/ipv4/ip_frag.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/fs/serv.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/user/lsfd:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib/pipe.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/guest/obj/user/ls:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/user/testshell:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/lwip/core/memp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/output.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+nc-7:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 438):
+	nc localhost $(PORT7)
+	
+
+# Not a target:
+.texinfo.dvi:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(TEXI2DVI) $(TEXI2DVI_FLAGS) $<
+
+obj/lib/liblwip.a: obj/net/lwip/api/api_lib.o obj/net/lwip/api/api_msg.o obj/net/lwip/api/err.o obj/net/lwip/api/sockets.o obj/net/lwip/api/tcpip.o obj/net/lwip/api/netbuf.o obj/net/lwip/core/init.o obj/net/lwip/core/tcp_in.o obj/net/lwip/core/dhcp.o obj/net/lwip/core/mem.o obj/net/lwip/core/memp.o obj/net/lwip/core/netif.o obj/net/lwip/core/pbuf.o obj/net/lwip/core/raw.o obj/net/lwip/core/stats.o obj/net/lwip/core/sys.o obj/net/lwip/core/tcp.o obj/net/lwip/core/ipv4/ip_addr.o obj/net/lwip/core/ipv4/icmp.o obj/net/lwip/core/ipv4/ip.o obj/net/lwip/core/ipv4/ip_frag.o obj/net/lwip/core/ipv4/inet_chksum.o obj/net/lwip/core/ipv4/inet.o obj/net/lwip/core/tcp_out.o obj/net/lwip/core/udp.o obj/net/lwip/netif/etharp.o obj/net/lwip/netif/loopif.o obj/net/lwip/jos/arch/sys_arch.o obj/net/lwip/jos/arch/thread.o obj/net/lwip/jos/arch/longjmp.o obj/net/lwip/jos/arch/perror.o obj/net/lwip/jos/jif/jif.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `net/lwip/Makefrag', line 71):
+	@echo + ar $@
+	$(V)mkdir -p $(@D)
+	$(V)$(AR) r $@ $(LWIP_OBJFILES)
+	
+
+bochs: obj/kern/kernel.img obj/fs/fs.img bochsrc
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 197):
+	$(BOCHS) $(BOCHSOPTS)
+	
+
+# Not a target:
+obj/guest/obj/lib/spawn.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/lib/printf.o: lib/printf.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `printf'
+#  Last modified 2014-11-28 14:36:51.914746744
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+kern/sched.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:25:59.682715643
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+obj/lib/fork.o: lib/fork.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `fork'
+#  Last modified 2014-11-28 14:36:52.418746768
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/guest/obj/lib/nsipc.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/kern/trap.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+user/Makefrag:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.342687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/guest/obj/.vars.INIT_CFLAGS:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/kern/mpentry.o: kern/mpentry.S obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `mpentry'
+#  Last modified 2014-11-28 14:36:51.162746708
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 105):
+	@echo + as $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+.y.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(YACC.y) $< 
+	mv -f y.tab.c $@
+
+# Not a target:
+obj/guest/obj/user/testkbd:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+conf/lab.mk:
+#  A default, MAKEFILES, or -include/sinclude makefile.
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.518687692
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+kern/bootstrap.S:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.338687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.web.tex:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(WEAVE) $<
+
+# Not a target:
+.texi.info:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(MAKEINFO) $(MAKEINFO_FLAGS) $< -o $@
+
+# Not a target:
+kern/kdebug.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.338687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/net/lwip/core/mem.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+kern/libdwarf_frame.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.338687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+obj/lib/entry.o: lib/entry.S obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `entry'
+#  Last modified 2014-11-28 14:36:51.594746728
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 44):
+	@echo + as[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/user/primes:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+which-ports:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 431):
+	@echo "Local port $(PORT7) forwards to JOS port 7 (echo server)"
+	@echo "Local port $(PORT80) forwards to JOS port 80 (web server)"
+	
+
+# Not a target:
+obj/guest/obj/lib/pageref.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/lib/pipe.o: lib/pipe.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `pipe'
+#  Last modified 2014-11-28 14:36:53.074746799
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/net/lwip/core/netif.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/net/lwip/core/stats.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/.vars.KERN_CFLAGS: FORCE
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `KERN_CFLAGS'
+#  Last modified 2014-11-28 14:35:17.398742237
+#  File has been updated.
+#  Successfully updated.
+# automatic
+# @ := obj/.vars.KERN_CFLAGS
+# automatic
+# % := 
+# automatic
+# * := KERN_CFLAGS
+# automatic
+# + := FORCE
+# automatic
+# | := 
+# automatic
+# < := FORCE
+# automatic
+# ^ := FORCE
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/17=6%
+#  commands to execute (from `GNUmakefile', line 142):
+	$(V)echo "$($*)" | cmp -s $@ || echo "$($*)" > $@
+	
+
+# Not a target:
+fs/testshell.key:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/.vars.USER_CFLAGS: FORCE
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `USER_CFLAGS'
+#  Last modified 2014-11-28 14:36:51.514746725
+#  File has been updated.
+#  Successfully updated.
+# automatic
+# @ := obj/.vars.USER_CFLAGS
+# automatic
+# % := 
+# automatic
+# * := USER_CFLAGS
+# automatic
+# + := FORCE
+# automatic
+# | := 
+# automatic
+# < := FORCE
+# automatic
+# ^ := FORCE
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/17=6%
+#  commands to execute (from `GNUmakefile', line 142):
+	$(V)echo "$($*)" | cmp -s $@ || echo "$($*)" > $@
+	
+
+# Not a target:
+kern/pci.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.338687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/guest/obj/lib/readline.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+fs/index.html:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/kern/env.o: kern/env.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `env'
+#  Last modified 2014-11-28 14:35:18.158742273
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/guest/obj/lib/syscall.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/kern/spinlock.o: kern/spinlock.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `spinlock'
+#  Last modified 2014-11-28 14:36:51.354746717
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+obj/fs/fs.img: obj/fs/clean-fs.img
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `fs/Makefrag', line 84):
+	@echo + cp $(OBJDIR)/fs/clean-fs.img $@
+	$(V)cp $(OBJDIR)/fs/clean-fs.img $@
+	
+
+obj/kern/pmap.o: kern/pmap.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `pmap'
+#  Last modified 2014-11-28 14:35:18.062742269
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/net/timer.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+fs/robig:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/user/echotest:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/kern/bootstrap.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+kern/mpconfig.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:25:19.14671371
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/net/input.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/user/testfilero:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/kern/console.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/lwip/jos/jif/jif.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+vmm/Makefrag:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:28:32.238722917
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/guest/obj/.vars.KERN_LDFLAGS:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/lwip/jos/arch/sys_arch.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+qemu-gdb: obj/kern/kernel.img obj/fs/fs.img pre-qemu
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 219):
+	@echo "***"
+	@echo "*** Now run 'gdb'." 1>&2
+	@echo "***"
+	$(QEMU) $(QEMUOPTS) -S
+	
+
+# Not a target:
+.tex.dvi:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(TEX) $<
+
+# Not a target:
+obj/guest/obj/net/lwip/core/ipv4/icmp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/lwip/core/dhcp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+net/Makefrag:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.342687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+obj/kern/bootstrap.o: kern/bootstrap.S obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `bootstrap'
+#  Last modified 2014-11-28 14:35:17.47474224
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 105):
+	@echo + as $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+.cpp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.cpp) $(OUTPUT_OPTION) $<
+
+# Not a target:
+.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.cpp) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+# Not a target:
+obj/guest/obj/net/lwip/core/ipv4/inet_chksum.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/net/lwip/api/sockets.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 238):
+	rm -rf $(OBJDIR) .gdbinit jos.in qemu.log
+	rm -rf bochsrc $(GUESTOBJDIR)
+	
+
+# Not a target:
+obj/user/init:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/user/hello:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.C.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.C) $(OUTPUT_OPTION) $<
+
+# Not a target:
+kern/trapentry.S:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.338687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/guest/obj/.vars.%:
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib/spawn.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/guest/obj/user/echo:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/boot/%.o:
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+kern/kernel.ld:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/kern/pci.o: kern/pci.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `pci'
+#  Last modified 2014-11-28 14:36:51.470746723
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+obj/net/ns: obj/net/serv.o obj/net/timer.o obj/net/input.o obj/net/output.o obj/lib/entry.o obj/lib/libjos.a obj/lib/liblwip.a user/user.ld
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `net/Makefrag', line 16):
+	@echo + ld $@
+	$(V)$(LD) -o $@ $(ULDFLAGS) $(LDFLAGS) -nostdlib \
+	$(OBJDIR)/lib/entry.o $< $(NET_OBJFILES) \
+	-L$(OBJDIR)/lib -ljos -llwip $(GCC_LIB)
+	$(V)$(OBJDUMP) -S $@ >$@.asm
+	
+
+# Not a target:
+kern/elf_rw.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.338687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/guest/obj/net/testinput:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib/nsipc.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/guest/obj/user/num:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/user/httpd:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/boot/main.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/lwip/core/ipv4/ip_addr.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/user/testfilero:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.txinfo.info:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(MAKEINFO) $(MAKEINFO_FLAGS) $< -o $@
+
+# Not a target:
+obj/lib/%.o:
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+kern/env.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:22:47.778706492
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+lib/pageref.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/fs/%.o:
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/fs/ide.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/testinput:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/net/lwip/netif/etharp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/kern/%.o:
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/kern/kclock.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/net/lwip/core/ipv4/inet.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/lwip/core/ipv4/ip_frag.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/fs/serv.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/lwip/api/tcpip.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/user/ls:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/user/testshell:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib/readline.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/guest/obj/user/cat:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/lib/ipc.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/.vars.KERN_LDFLAGS:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/net/lwip/api/tcpip.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib/syscall.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:27:42.234720533
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+net/lwip/Makefrag:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.358687685
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+obj/lib/spawn.o: lib/spawn.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `spawn'
+#  Last modified 2014-11-28 14:36:52.854746789
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+GNUmakefile:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:59:11.49881062
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+obj/guest/obj/fs/fs: obj/guest/obj/fs/ide.o obj/guest/obj/fs/bc.o obj/guest/obj/fs/fs.o obj/guest/obj/fs/serv.o obj/guest/obj/fs/test.o obj/guest/obj/fs/vmx_host.o obj/guest/obj/lib/entry.o obj/guest/obj/lib/libjos.a user/user.ld
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `fs/Makefrag', line 60):
+	@echo + ld $@
+	$(V)mkdir -p $(@D)
+	$(V)$(LD) -o $@ $(ULDFLAGS) $(LDFLAGS) -nostdlib \
+	$(OBJDIR)/lib/entry.o $(FSOFILES) \
+	-L$(OBJDIR)/lib -ljos $(GCC_LIB)
+	$(V)$(OBJDUMP) -S $@ >$@.asm
+	
+
+obj/kern/trap.o: kern/trap.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `trap'
+#  Last modified 2014-11-28 14:35:18.402742285
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+obj/.vars.INIT_CFLAGS: FORCE
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `INIT_CFLAGS'
+#  Last modified 2014-11-28 14:16:13.46668769
+#  File has been updated.
+#  Successfully updated.
+# automatic
+# @ := obj/.vars.INIT_CFLAGS
+# automatic
+# % := 
+# automatic
+# * := INIT_CFLAGS
+# automatic
+# + := FORCE
+# automatic
+# | := 
+# automatic
+# < := FORCE
+# automatic
+# ^ := FORCE
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=3/17=18%
+#  commands to execute (from `GNUmakefile', line 142):
+	$(V)echo "$($*)" | cmp -s $@ || echo "$($*)" > $@
+	
+
+# Not a target:
+obj/guest/obj/user/testpteshare:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+fs/motd_guest:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/net/%.o:
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/user/testkbd:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/lib/malloc.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/user/testpiperace:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+qemu-nox: obj/kern/kernel.img obj/fs/fs.img pre-qemu
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 213):
+	@echo "***"
+	@echo "*** Use Ctrl-a x to exit qemu"
+	@echo "***"
+	$(QEMU) -nographic $(QEMUOPTS)
+	
+
+# Not a target:
+obj/guest/obj/lib/panic.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/net/serv.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/lwip/core/tcp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+kern/libdwarf_lineno.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.338687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/user/testpiperace2:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+guestvm: obj/guest/obj/kern/kernel obj/guest/obj/boot/boot
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+kern/entry.S:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.338687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/guest/obj/net/lwip/jos/arch/thread.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+fs/newmotd:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/net/lwip/core/tcp_out.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/user/init:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/lib/pageref.o: lib/pageref.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `pageref'
+#  Last modified 2014-11-28 14:36:52.782746785
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+.S.s:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(PREPROCESS.S) $< > $@
+
+# Not a target:
+.mod:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.mod) -o $@ -e $@ $^
+
+# Not a target:
+obj/guest/obj/kern/time.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/lwip/core/raw.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/lwip/core/stats.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/user/testtime:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/user/sh:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/net/lwip/core/ipv4/ip.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.mod.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.mod) -o $@ $<
+
+# Not a target:
+obj/guest/obj/lib/libmain.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/user/vmm:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.F.f:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(PREPROCESS.F) $(OUTPUT_OPTION) $<
+
+# Not a target:
+obj/guest/obj/user/icode:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/kern/mpentry.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/kern/e1000.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+fs/testshell.sh:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/net/timer.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/lib/libmain.o: lib/libmain.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `libmain'
+#  Last modified 2014-11-28 14:36:51.730746735
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+bochsrc: .bochsrc.tmpl
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 192):
+	$(eval KERN_PATH := $(shell pwd)/$(OBJDIR)/kern/kernel.img)
+	$(eval FS_PATH := $(shell pwd)/$(OBJDIR)/fs/fs.img)
+	sed -e "s,path_to_kernel_img,$(KERN_PATH)," -e "s,path_to_disk_img,$(FS_PATH)," < $^ > $@
+	
+
+# Not a target:
+obj/guest/obj/net/lwip/jos/arch/longjmp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.DELETE_ON_ERROR:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/user/echotest:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/lib/sockets.o: lib/sockets.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sockets'
+#  Last modified 2014-11-28 14:36:52.910746791
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+.S.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.S) -o $@ $<
+
+# Not a target:
+obj/user/idle:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/lib/printfmt.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/fs/vmx_host.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.bochsrc.tmpl:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/testoutput:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/kern/console.o: kern/console.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `console'
+#  Last modified 2014-11-28 14:35:17.68274225
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/guest/obj/user/forktree:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/kern/elf_rw.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/kern/sched.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/kern/libdwarf_lineno.o: kern/libdwarf_lineno.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `libdwarf_lineno'
+#  Last modified 2014-11-28 14:36:51.046746702
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/net/lwip/core/ipv4/icmp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+kern/kclock.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.338687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+fs/lorem:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+bochs-nox-gdb: obj/kern/kernel.img obj/fs/fs.img bochsrc
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 206):
+	$(BOCHS) $(BOCHSOPTS) 'display_library: term' 'gdbstub: enabled=1, port=1234'
+	
+
+# Not a target:
+obj/net/lwip/api/api_msg.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+conf/guest/lab.mk:
+#  A default, MAKEFILES, or -include/sinclude makefile.
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:18:16.006693533
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/net/lwip/core/ipv4/inet_chksum.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/lwip/core/sys.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/lwip/api/sockets.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/user/hello: obj/user/hello.o obj/lib/entry.o obj/lib/libjos.a obj/lib/liblwip.a user/user.ld
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `hello'
+#  Last modified 2014-11-28 14:16:13.450687689
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/12=0%
+#  commands to execute (from `user/Makefrag', line 12):
+	@echo + ld $@
+	$(V)$(LD) -o $@.debug $(ULDFLAGS) $(LDFLAGS) -nostdlib $(OBJDIR)/lib/entry.o $@.o -L$(OBJDIR)/lib $(USERLIBS:%=-l%) $(GCC_LIB)
+	$(V)$(OBJDUMP) -S $@.debug > $@.asm
+	$(V)$(NM) -n $@.debug > $@.sym
+	$(V)$(OBJCOPY) --add-gnu-debuglink=$(basename $@.debug) $@.debug $@
+	
+
+# Not a target:
+obj/guest/obj/kern/libdwarf_lineno.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/lib/wait.o: lib/wait.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `wait'
+#  Last modified 2014-11-28 14:36:53.118746801
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/user/echo:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/lwip/api/api_lib.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/lib/readline.o: lib/readline.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `readline'
+#  Last modified 2014-11-28 14:36:52.062746751
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/guest/obj/net/lwip/api/err.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/kern/kdebug.o: kern/kdebug.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `kdebug'
+#  Last modified 2014-11-28 14:36:50.434746673
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/boot/%.o:
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/net/lwip/core/tcp_in.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/net/lwip/core/init.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/boot/main.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.F:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.F) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+# Not a target:
+/boot/boot.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/kern/readline.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+/boot/boot: /boot/boot.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `vmm/Makefrag', line 11):
+	@echo + ld $(OBJGUESTDIR)/boot/boot
+	$(V)$(LD) $(BOOT_LDFLAGS) -N -e gboot_start -Ttext 0x7000 -o $@.out $^
+	$(V)$(OBJDUMP) -S $@.out >$@.asm
+	$(V)$(OBJCOPY) -S -O binary -j .text $@.out $@
+	$(V)perl boot/sign.pl $(OBJGUESTDIR)/boot/boot
+	
+
+obj/kern/kclock.o: kern/kclock.c obj/.vars.KERN_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `kclock'
+#  Last modified 2014-11-28 14:35:18.194742275
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `kern/Makefrag', line 100):
+	@echo + cc $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(KERN_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+lib/panic.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/user/httpd:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/kern/syscall.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+kern/mpentry.S:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.338687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/net/lwip/api/netbuf.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/lib/syscall.o: lib/syscall.c obj/.vars.USER_CFLAGS
+#  Precious file (prerequisite of .PRECIOUS).
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `syscall'
+#  Last modified 2014-11-28 14:36:52.238746759
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `lib/Makefrag', line 39):
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	
+
+# Not a target:
+obj/guest/obj/lib/wait.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/net/lwip/core/pbuf.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.f:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.f) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+# Not a target:
+obj/net/lwip/netif/etharp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/fs/fs.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/net/lwip/core/memp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.f.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.f) $(OUTPUT_OPTION) $<
+
+# Not a target:
+obj/net/lwip/core/ipv4/inet.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib/libmain.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.334687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/guest/obj/fs/test.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+telnet-80:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `GNUmakefile', line 441):
+	telnet localhost $(PORT80)
+	
+
+# Not a target:
+kern/libdwarf_rw.c:
+#  Implicit rule search has been done.
+#  Last modified 2014-11-28 14:16:13.338687684
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+obj/user/cat:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/guest/obj/fs/bc.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=462/1024=45%, Rehash=0, Collisions=1035/1892=55%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 12
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 3923 / max = 3923 / min = 3923 / avg = 3923
+
+# Finished Make data base on Fri Nov 28 16:03:49 2014
+

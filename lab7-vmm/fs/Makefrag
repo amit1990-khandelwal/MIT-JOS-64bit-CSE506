@@ -1,0 +1,160 @@
+
+OBJDIRS += fs
+GUESTDIRS += fs
+
+FSOFILES := 		$(OBJDIR)/fs/ide.o \
+			$(OBJDIR)/fs/bc.o \
+			$(OBJDIR)/fs/fs.o \
+			$(OBJDIR)/fs/serv.o \
+			$(OBJDIR)/fs/test.o \
+			$(OBJDIR)/fs/vmx_host.o
+
+GUESTFSOFILES := 	$(GUESTDIR)/fs/ide.o \
+			$(GUESTDIR)/fs/bc.o \
+			$(GUESTDIR)/fs/fs.o \
+			$(GUESTDIR)/fs/serv.o \
+			$(GUESTDIR)/fs/test.o \
+			$(GUESTDIR)/fs/vmx_host.o
+
+ROOTAPPS := $(OBJDIR)/user/init
+GUESTROOTAPPS := $(GUESTDIR)/user/init
+
+GUESTFSIMGTXTFILES :=	fs/newmotd \
+			fs/motd 
+
+FSIMGTXTFILES :=	fs/newmotd \
+			fs/motd 
+
+GUESTFSIMGTXTFILES +=	fs/motd_guest
+
+FSIMGTXTFILES +=	fs/robig
+
+FSIMGTXTFILES :=	$(FSIMGTXTFILES) \
+			fs/index.html
+
+GUESTFSIMGTXTFILES :=	$(GUESTFSIMGTXTFILES) \
+			fs/index.html
+
+USERAPPS :=		$(USERAPPS) \
+			$(OBJDIR)/user/cat \
+			$(OBJDIR)/user/echo \
+			$(OBJDIR)/user/ls \
+			$(OBJDIR)/user/lsfd \
+			$(OBJDIR)/user/num \
+			$(OBJDIR)/user/forktree \
+			$(OBJDIR)/user/primes \
+			$(OBJDIR)/user/primespipe \
+			$(OBJDIR)/user/sh \
+			$(OBJDIR)/user/testfdsharing \
+			$(OBJDIR)/user/testkbd \
+			$(OBJDIR)/user/testpipe \
+			$(OBJDIR)/user/testpteshare \
+			$(OBJDIR)/user/testshell \
+			$(OBJDIR)/user/hello \
+
+GUESTUSERAPPS :=	$(GUESTUSERAPPS) \
+			$(GUESTDIR)/user/cat \
+			$(GUESTDIR)/user/echo \
+			$(GUESTDIR)/user/ls \
+			$(GUESTDIR)/user/lsfd \
+			$(GUESTDIR)/user/num \
+			$(GUESTDIR)/user/forktree \
+			$(GUESTDIR)/user/primes \
+			$(GUESTDIR)/user/primespipe \
+			$(GUESTDIR)/user/sh \
+			$(GUESTDIR)/user/testfdsharing \
+			$(GUESTDIR)/user/testkbd \
+			$(GUESTDIR)/user/testpipe \
+			$(GUESTDIR)/user/testpteshare \
+			$(GUESTDIR)/user/testshell \
+			$(GUESTDIR)/user/hello \
+
+FSIMGTXTFILES :=	$(FSIMGTXTFILES) \
+			fs/lorem \
+			fs/script \
+			fs/testshell.key \
+			fs/testshell.sh
+
+GUESTFSIMGTXTFILES :=	$(GUESTFSIMGTXTFILES) \
+			fs/lorem \
+			fs/script \
+			fs/testshell.key \
+			fs/testshell.sh
+
+GUESTKERNELS = $(GUESTDIR)/kern/kernel
+GUESTKERNELS += $(GUESTDIR)/boot/boot
+GUESTKERNELS += $(GUESTDIR)/fs/fs.img
+USERAPPS += $(OBJDIR)/user/vmm
+
+
+FSIMGFILES := $(FSIMGTXTFILES) $(USERAPPS) $(ROOTAPPS) $(GUESTKERNELS)
+GUESTFSIMGFILES := $(GUESTFSIMGTXTFILES) $(GUESTUSERAPPS) $(GUESTROOTAPPS)
+
+$(OBJDIR)/fs/%.o: fs/%.c fs/fs.h inc/lib.h
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	@mkdir -p $(subst $(OBJDIR),$(GUESTDIR),$(@D))
+	$(V)$(CC) -nostdinc $(USER_CFLAGS) -c -o $@ $<
+	$(V)$(CC) -nostdinc $(GUEST_USER_CFLAGS) -c -o $(subst $(OBJDIR),$(GUESTDIR),$@) $<
+
+$(GUESTDIR)/fs/%.o: fs/%.c fs/fs.h inc/lib.h
+	@echo + cc[USER] $<
+	@mkdir -p $(@D)
+	$(V)$(CC) -nostdinc $(GUEST_USER_CFLAGS) -c -o $@ $<
+
+# How to build the file system image
+$(OBJDIR)/fs/fsformat: fs/fsformat.c
+	@echo + mk $(OBJDIR)/fs/fsformat
+	@echo + mk $(GUESTDIR)/fs/fsformat
+	$(V)mkdir -p $(@D)
+	$(V)mkdir -p $(subst $(OBJDIR), $(GUESTDIR), $(@D))
+	$(V)$(NCC) $(NATIVE_CFLAGS) -o $(OBJDIR)/fs/fsformat fs/fsformat.c
+	$(V)$(NCC) $(NATIVE_CFLAGS) -o $(GUESTDIR)/fs/fsformat fs/fsformat.c
+
+# How to build the file system image
+$(GUESTDIR)/fs/fsformat: fs/fsformat.c
+	@echo + mk $(GUESTDIR)/fs/fsformat
+	$(V)mkdir -p $(@D)
+	$(V)$(NCC) $(NATIVE_CFLAGS) -o $(GUESTDIR)/fs/fsformat fs/fsformat.c
+
+$(OBJDIR)/fs/fs: $(FSOFILES) $(OBJDIR)/lib/entry.o $(OBJDIR)/lib/libjos.a user/user.ld
+	@echo + ld $@
+	$(V)mkdir -p $(@D)
+	$(V)$(LD) -o $@ $(ULDFLAGS) $(LDFLAGS) -nostdlib \
+		$(OBJDIR)/lib/entry.o $(FSOFILES) \
+		-L$(OBJDIR)/lib -ljos $(GCC_LIB)
+	$(V)$(OBJDUMP) -S $@ > $@.asm
+
+$(GUESTDIR)/fs/fs: $(GUESTFSOFILES) $(GUESTDIR)/lib/entry.o $(GUESTDIR)/lib/libjos.a user/guestuser.ld
+	@echo + ld $@
+	$(V)mkdir -p $(@D)
+	$(V)$(LD) -o $@ $(GULDFLAGS) $(LDFLAGS) -nostdlib \
+		$(GUESTDIR)/lib/entry.o $(GUESTFSOFILES) \
+		-L$(GUESTDIR)/lib -ljos $(GCC_LIB)
+	$(V)$(OBJDUMP) -S $@ > $@.asm
+
+$(OBJDIR)/fs/clean-fs.img: $(OBJDIR)/fs/fsformat $(FSIMGFILES)
+	@echo + mk $(OBJDIR)/fs/clean-fs.img
+	$(V)mkdir -p $(@D)
+	$(V)$(OBJDIR)/fs/fsformat $(OBJDIR)/fs/clean-fs.img 4096  $(FSIMGTXTFILES) -b $(USERAPPS) -sb $(ROOTAPPS) -g $(GUESTKERNELS)
+
+$(GUESTDIR)/fs/clean-fs.img: $(GUESTDIR)/fs/fsformat $(GUESTFSIMGFILES) $(GUESTFSIMGTXTFILES)
+	@echo + mk $(GUESTDIR)/fs/clean-fs.img
+	$(V)mkdir -p $(@D)
+	$(V)$(GUESTDIR)/fs/fsformat $(GUESTDIR)/fs/clean-fs.img 1024 $(GUESTFSIMGTXTFILES) -b $(GUESTUSERAPPS) -sb $(GUESTROOTAPPS)
+
+$(OBJDIR)/fs/fs.img: $(OBJDIR)/fs/clean-fs.img
+	@echo + cp $(OBJDIR)/fs/clean-fs.img $@
+	$(V)cp $(OBJDIR)/fs/clean-fs.img $@
+
+$(GUESTDIR)/fs/fs.img: $(GUESTDIR)/fs/clean-fs.img
+	@echo + cp $(GUESTDIR)/fs/clean-fs.img $@
+	$(V)cp $(GUESTDIR)/fs/clean-fs.img $@
+
+all: $(OBJDIR)/fs/fs.img $(GUESTDIR)/fs/fs.img
+
+
+#all: $(addsuffix .sym, $(USERAPPS))
+
+#all: $(addsuffix .asm, $(USERAPPS))
+
