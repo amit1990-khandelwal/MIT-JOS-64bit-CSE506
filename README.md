@@ -4,8 +4,8 @@ MIT-JOS-64bit-CSE506
 As a part of lab project of the Operating Systems (CSE-506) course taught at Stony Brook University,  implemented some of the kernel features in 64-bit JOS kernel (initially developed at MIT as a open source project for academic purposes) 
 
 As per the instructions given on the course webpage http://www.cs.stonybrook.edu/~porter/courses/cse506/f14/labs.html, implemented some features of the following broadly catagoried topics :-
-Lab 1: x86 assembly, boot loader
 
+Lab 1: x86 assembly, boot loader
 Lab 2: Virtual Memory 
 
 Lab 3: Processes/environments 
