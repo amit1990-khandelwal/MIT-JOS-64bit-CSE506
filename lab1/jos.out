@@ -1,0 +1,36 @@
+*** Now run 'gdb'.
+***
+Could not open option rom 'sgabios.bin': No such file or directory
+6828 decimal is 15254 octal!
+entering test_backtrace 5
+entering test_backtrace 4
+entering test_backtrace 3
+entering test_backtrace 2
+entering test_backtrace 1
+entering test_backtrace 0
+Stack backtrace:
+  rbp 000000800421af20  rip 000000800420119a
+       kern/monitor.c:67: mon_backtrace+0000000000000036  args:3  0000000000000000  0000000000000000  0000000000000080
+  rbp 000000800421af40  rip 00000080042000ba
+       kern/init.c:25: test_backtrace+0000000000000062  args:1  0000000000000000
+  rbp 000000800421af60  rip 000000800420009d
+       kern/init.c:22: test_backtrace+0000000000000045  args:1  0000000000000001
+  rbp 000000800421af80  rip 000000800420009d
+       kern/init.c:22: test_backtrace+0000000000000045  args:1  0000000000000002
+  rbp 000000800421afa0  rip 000000800420009d
+       kern/init.c:22: test_backtrace+0000000000000045  args:1  0000000000000003
+  rbp 000000800421afc0  rip 000000800420009d
+       kern/init.c:22: test_backtrace+0000000000000045  args:1  0000000000000004
+  rbp 000000800421afe0  rip 000000800420009d
+       kern/init.c:22: test_backtrace+0000000000000045  args:1  0000000000000005
+  rbp 000000800421aff0  rip 0000008004200188
+       kern/init.c:55: i386_init+00000000000000ac  args:0
+leaving test_backtrace 0
+leaving test_backtrace 1
+leaving test_backtrace 2
+leaving test_backtrace 3
+leaving test_backtrace 4
+leaving test_backtrace 5
+Welcome to the JOS kernel monitor!
+Type 'help' for a list of commands.
+qemu: terminating on signal 15 from pid 10177
